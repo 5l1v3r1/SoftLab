@@ -2,11 +2,18 @@ package jninative;
 
 /**
  * ====================JNI with C================
- *
+ * <p/>
  * Step 1: Write a Java Class that uses C Codes - HelloJNI.java
- *
+ * <p/>
  * Step 2: Create the C/C++ Header file - HelloJNI.h
+ * <p/>
+ * Step 3: C Implementation of HelloJNI.h - the HelloJNI.c
  *
+ * Step 4: Create a so file and set in LD_LIBRARY_PATH or java.library.path
+ *
+ * Step5: Set VM Option -Djava.library.path=../native_keyword/jni/HelloJNI.so
+ *
+ * Step6: Run program
  */
 public class HelloJNI {
     /**
@@ -17,7 +24,8 @@ public class HelloJNI {
      *  CMD param: -Djava.library.path=path_to_lib instead of -classpath=path-to-libs
      */
     static {
-        System.loadLibrary("hello");
+        System.out.println(">>>>:" + System.getProperty("java.library.path"));
+        System.loadLibrary("hellojni");
     }
 
     /**
