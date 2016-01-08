@@ -8,7 +8,7 @@ import java.io.Reader;
  * Created by hdhamee on 1/6/16.
  */
 public class Scanner {
-    private static final char eofCh = '\u0080';
+    private static final char eofCh = '\u0080'; // character that is returned at the end of the file
     private static final char eol = '\n';
     private static final int  // token codes
             none      = 0,
@@ -48,7 +48,8 @@ public class Scanner {
             void_     = 34,
             while_    = 35,
             eof       = 36;
-    private static final String key[] = { // sorted list of keywords
+    private static final String key[] = {
+            // sorted list of keywords
             "class", "else", "final", "if", "new", "print",
             "program", "read", "return", "void", "while"
     };
@@ -80,93 +81,100 @@ public class Scanner {
         in = new BufferedReader(r);
         lex = new char[64];
         line = 1; col = 0;
-        nextCh();
+        nextCh();// reads the first character into ch and increments col to 1
     }
 
     //---------- Return next input token
     public static Token next() {
-        while (ch <= ' ') nextCh(); // skip blanks, tabs, eols
+        while (ch <= ' ' ) nextCh(); // skip blanks, tabs, eols
         Token t = new Token(); t.line = line; t.col = col;
         switch (ch) {
-            case 'a': case 'b':  case 'z': case 'A': case 'B':  case 'Z':
-                readName(t); break;
-            case '0': case '1':  case '9':
-                readNumber(t); break;
-            case ';': nextCh(); t.kind = semicolon; break;
-            case '.': nextCh(); t.kind = period; break;
-            case eofCh: t.kind = eof; break; // no nextCh() any more
+            case 'a':case 'b': case 'c':case 'd':case 'e':case 'f':case 'g':case 'h':case 'i':case 'j':case 'k':case 'l':case 'm':
+            case 'n':case 'o':case 'p':case 'q':case 'r':case 's':case 't':case 'u':case 'v':case 'w':case 'x':case 'y': case 'z':
+            case 'A':case 'B':case 'C':case 'D':case 'E':case 'F':case 'G':case 'H':case 'I':case 'J':case 'K':case 'L':case 'M':
+            case 'N':case 'O':case 'P':case 'Q':case 'R':case 'S':case 'T':case 'U':case 'V':case 'W':case 'X':case 'Y':case 'Z':
+                readName(t);
+                break;
+            case '0':case '1':case '2':case '3':case '4':case '5':case '6':case '7':case '8':case '9':
+                readNumber(t);
+                break;
+            case ';':
+                nextCh();
+                t.kind = semicolon;
+                break;
+            case '.':
+                nextCh();
+                t.kind = period;
+                break;
+            case eofCh:
+                t.kind = eof;
+                break; // no nextCh() any more
 
-            case '=': nextCh();
-                if (ch == '=') { nextCh(); t.kind = eql; } else t.kind = assign;
+            case '=':
+                nextCh();
+                if (ch == '=') {
+                    nextCh();
+                    t.kind = eql;
+                } else
+                    t.kind = assign;
                 break;
 
             case '/': nextCh();
                 if (ch == '/') {
-                    do nextCh(); while (ch != '\n' && ch != eofCh);
+                    do
+                        nextCh();
+                    while (ch != '\n' && ch != eofCh);
                     t = next(); // call scanner recursively
-                } else t.kind = slash;
+                } else
+                    t.kind = slash;
                 break;
-            default: nextCh(); t.kind = none; break;
+            default:
+                nextCh();
+                t.kind = none;
+                break;
         }
         return t;
     } // ch holds the next character that is still unprocessed
 
-    // todo: template impl
-    private static void readNumber(Token t) {
-        StringBuilder b = new StringBuilder();
-        b.append(ch);
-        do {
-            try {
-                ch = (char) in.read();
-                col++;
-                pos++;
-                b.append(ch);
-                if (ch == eol) {
-                    line++;
-                    col = 0;
-                    break;
-                } else if(ch == '\uffff'){
-                    ch = eofCh;
-                    break;
-                }
-                else if (Character.isWhitespace(ch)){
-                    col++;
-                    break;
-                }
-            } catch (IOException e) {
-                ch = eofCh;
-            }
-        }while (true);
-        t.string = b.toString();
-        t.kind = 1;
-    }
-    // todo; this is sample impl
     private static void readName(Token t) {
-        StringBuilder b = new StringBuilder();
-        b.append(ch);
-        do {
+        String ret = "";
+        while ((ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z') && ch !=eofCh) {
+            ret += ch;
             try {
                 ch = (char) in.read();
-                col++;
-                pos++;
-                b.append(ch);
-                if (ch == eol) {
-                    line++;
-                    col = 0;
-                    break;
-                } else if(ch == '\uffff'){
-                    ch = eofCh;
-                    break;
-                }
-                else if (Character.isWhitespace(ch)){
-                    col++;
-                    break;
-                }
             } catch (IOException e) {
                 ch = eofCh;
             }
-        }while (true);
-        t.string = b.toString();
-        t.kind = 1;
+        }
+        t.kind = tokenCode(ret);
+        t.string = ret;
+    }
+
+    private static void readNumber(Token t) {
+        String num = "";
+        int radix = 10;
+        while ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'f')  || (ch >= 'A' && ch <= 'F') && ch != eofCh) {
+            num += ch;
+            try {
+                ch = (char) in.read();
+            } catch (IOException e) {
+                ch = eofCh;
+            }
+        }
+        if (ch == 'h' || ch == 'H') {
+            radix = 16;
+            try {
+                ch = (char) in.read();
+            } catch (IOException e) {
+                ch = eofCh;
+            }
+        }
+        Integer value = Integer.parseInt(num, radix);
+        t.kind = number;
+        t.val = value;
+    }
+
+    private static int tokenCode(String ret) {
+        return 0;
     }
 }
