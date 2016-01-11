@@ -92,7 +92,9 @@ public class TestScanner {
     // Main method of the scanner tester
     public static void main(String[] args) {
         Token t;
-        String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/sample.mj";
+        //String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/sample.mj";
+        //String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/sample2.mj";
+        String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/BuggyScannerInput.mj";
         if (source != null) {
             try {
                 Scanner.init(new InputStreamReader(new FileInputStream(source)));
@@ -102,7 +104,6 @@ public class TestScanner {
                     switch (t.kind) {
                         case ident:   System.out.println(t.string); break;
                         case number:  System.out.println(t.val); break;
-                        case charCon: System.out.println(t.val); break;
                         default: System.out.println(); break;
                     }
                 } while (t.kind != eof);

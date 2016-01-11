@@ -3,6 +3,7 @@ package mj;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.HashMap;
 
 /**
  * Created by hdhamee on 1/6/16.
@@ -64,6 +65,7 @@ public class Scanner {
     private static int pos;			// current position from start of source file
     private static Reader in;  	// source file reader
     private static char[] lex;	// current lexeme (token string)
+    private static HashMap<String,Integer> symbols = new HashMap<String, Integer>();
 
     //----- ch = next input character
     private static void nextCh() {
@@ -81,6 +83,44 @@ public class Scanner {
         in = new BufferedReader(r);
         lex = new char[64];
         line = 1; col = 0;
+        // put symbol codes in symbol table
+        symbols.put("none",0);
+        symbols.put("ident",1);
+        symbols.put("number",2);
+        symbols.put("charCon",3);
+        symbols.put("plus",4);
+        symbols.put("minus",5);
+        symbols.put("times",6);
+        symbols.put("slash",7);
+        symbols.put("rem",8);
+        symbols.put("eql",9);
+        symbols.put("neq",10);
+        symbols.put("lss",11);
+        symbols.put("leq",12);
+        symbols.put("gtr",13);
+        symbols.put("geq",14);
+        symbols.put("assign",15);
+        symbols.put("semicolon",16);
+        symbols.put("comma",17);
+        symbols.put("period",18);
+        symbols.put("lpar",19);
+        symbols.put("rpar",20);
+        symbols.put("lbrack",21);
+        symbols.put("rbrack",22);
+        symbols.put("lbrace",23);
+        symbols.put("rbrace",24);
+        symbols.put("class_",25);
+        symbols.put("else_",26);
+        symbols.put("final_",27);
+        symbols.put("if_",28);
+        symbols.put("new_",29);
+        symbols.put("print_",30);
+        symbols.put("program_",31);
+        symbols.put("read_",32);
+        symbols.put("return_",33);
+        symbols.put("void_",34);
+        symbols.put("while_",35);
+        symbols.put("eof",36);
         nextCh();// reads the first character into ch and increments col to 1
     }
 
@@ -109,7 +149,6 @@ public class Scanner {
             case eofCh:
                 t.kind = eof;
                 break; // no nextCh() any more
-
             case '=':
                 nextCh();
                 if (ch == '=') {
@@ -118,7 +157,6 @@ public class Scanner {
                 } else
                     t.kind = assign;
                 break;
-
             case '/': nextCh();
                 if (ch == '/') {
                     do
@@ -175,6 +213,14 @@ public class Scanner {
     }
 
     private static int tokenCode(String ret) {
-        return 0;
+        String key = ret+"_";
+        int v = ident;
+        if (symbols.containsKey(ret)){
+            v = symbols.get(ret);
+        }
+        if (symbols.containsKey(key)){
+            v = symbols.get(key);
+        }
+        return v;
     }
 }
