@@ -83,11 +83,17 @@ public class Scanner {
         in = new BufferedReader(r);
         lex = new char[64];
         line = 1; col = 0;
+
         // put symbol codes in symbol table
+        // error token-codes
         symbols.put("none",0);
+
+        // token classes token-codes
         symbols.put("ident",1);
         symbols.put("number",2);
         symbols.put("charCon",3);
+
+        // operators and special characters token-codes
         symbols.put("plus",4);
         symbols.put("minus",5);
         symbols.put("times",6);
@@ -109,6 +115,8 @@ public class Scanner {
         symbols.put("rbrack",22);
         symbols.put("lbrace",23);
         symbols.put("rbrace",24);
+
+        // keywords token-codes
         symbols.put("class_",25);
         symbols.put("else_",26);
         symbols.put("final_",27);
@@ -120,6 +128,8 @@ public class Scanner {
         symbols.put("return_",33);
         symbols.put("void_",34);
         symbols.put("while_",35);
+
+        // end of line token-codes
         symbols.put("eof",36);
         nextCh();// reads the first character into ch and increments col to 1
     }
@@ -178,11 +188,7 @@ public class Scanner {
         String ret = "";
         while ((ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z') && ch !=eofCh) {
             ret += ch;
-            try {
-                ch = (char) in.read();
-            } catch (IOException e) {
-                ch = eofCh;
-            }
+            nextCh();
         }
         t.kind = tokenCode(ret);
         t.string = ret;

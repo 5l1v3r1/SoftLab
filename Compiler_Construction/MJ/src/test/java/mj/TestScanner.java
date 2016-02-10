@@ -12,9 +12,11 @@ import java.io.InputStreamReader;
 public class TestScanner {
     private static final int  // token codes
             none      = 0,
+
             ident     = 1,
             number    = 2,
             charCon   = 3,
+
             plus      = 4,
             minus     = 5,
             times     = 6,
@@ -36,6 +38,7 @@ public class TestScanner {
             rbrack    = 22,
             lbrace    = 23,
             rbrace    = 24,
+
             class_    = 25,
             else_     = 26,
             final_    = 27,
@@ -47,54 +50,64 @@ public class TestScanner {
             return_   = 33,
             void_     = 34,
             while_    = 35,
+
             eof       = 36;
 
     private static String[] tokenName = {
+            // error token-codes
             "none",
-            "ident  ",
+
+            // token classes token-codes
+            "ident ",
             "number ",
-            "char   ",
-            "+",
-            "-",
-            "*",
-            "/",
-            "%",
-            "==",
-            "!=",
-            "<",
-            "<=",
-            ">",
-            ">=",
-            "=",
-            ";",
-            ",",
-            ".",
-            "(",
-            ")",
-            "[",
-            "]",
-            "{",
-            "}",
-            "class",
-            "else",
-            "final",
-            "if",
-            "new",
-            "print",
-            "program",
-            "read",
-            "return",
-            "void",
-            "while",
+            "charCon ",
+
+            // operators and special characters token-codes
+            "plus",
+            "minus",
+            "times",
+            "slash",
+            "rem",
+            "eql",
+            "neq",
+            "lss",
+            "leq",
+            "gtr",
+            "geq",
+            "assign",
+            "semicolon",
+            "comma",
+            "period",
+            "lpar",
+            "rpar",
+            "lbrack",
+            "rbrack",
+            "lbrace",
+            "rbrace",
+
+            // keywords token-codes
+            "class_",
+            "else_",
+            "final_",
+            "if_",
+            "new_",
+            "print_",
+            "program_",
+            "read_",
+            "return_",
+            "void_",
+            "while_",
+
+            // end of line token-codes
             "eof"
     };
 
     // Main method of the scanner tester
     public static void main(String[] args) {
         Token t;
-        //String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/sample.mj";
+        String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/sample.mj";
         //String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/sample2.mj";
-        String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/BuggyScannerInput.mj";
+        //String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/BuggyScannerInput.mj";
         if (source != null) {
             try {
                 Scanner.init(new InputStreamReader(new FileInputStream(source)));
