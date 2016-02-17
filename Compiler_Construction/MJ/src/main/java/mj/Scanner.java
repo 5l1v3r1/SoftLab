@@ -6,7 +6,7 @@ import java.io.Reader;
 import java.util.HashMap;
 
 /**
- * Created by hdhamee on 1/6/16.
+ * @author Hikmat Dhamee
  */
 public class Scanner {
     private static final char eofCh = '\u0080'; // character that is returned at the end of the file
@@ -49,11 +49,13 @@ public class Scanner {
             void_     = 34,
             while_    = 35,
             eof       = 36;
+
     private static final String key[] = {
             // sorted list of keywords
             "class", "else", "final", "if", "new", "print",
             "program", "read", "return", "void", "while"
     };
+
     private static final int keyVal[] = {
             class_, else_, final_, if_, new_, print_,
             program_, read_, return_, void_, while_
@@ -65,7 +67,6 @@ public class Scanner {
     private static int pos;			// current position from start of source file
     private static Reader in;  	// source file reader
     private static char[] lex;	// current lexeme (token string)
-    private static HashMap<String,Integer> symbols = new HashMap<String, Integer>();
 
     //----- ch = next input character
     private static void nextCh() {
@@ -83,54 +84,6 @@ public class Scanner {
         in = new BufferedReader(r);
         lex = new char[64];
         line = 1; col = 0;
-
-        // put symbol codes in symbol table
-        // error token-codes
-        symbols.put("none",0);
-
-        // token classes token-codes
-        symbols.put("ident",1);
-        symbols.put("number",2);
-        symbols.put("charCon",3);
-
-        // operators and special characters token-codes
-        symbols.put("plus",4);
-        symbols.put("minus",5);
-        symbols.put("times",6);
-        symbols.put("slash",7);
-        symbols.put("rem",8);
-        symbols.put("eql",9);
-        symbols.put("neq",10);
-        symbols.put("lss",11);
-        symbols.put("leq",12);
-        symbols.put("gtr",13);
-        symbols.put("geq",14);
-        symbols.put("assign",15);
-        symbols.put("semicolon",16);
-        symbols.put("comma",17);
-        symbols.put("period",18);
-        symbols.put("lpar",19);
-        symbols.put("rpar",20);
-        symbols.put("lbrack",21);
-        symbols.put("rbrack",22);
-        symbols.put("lbrace",23);
-        symbols.put("rbrace",24);
-
-        // keywords token-codes
-        symbols.put("class_",25);
-        symbols.put("else_",26);
-        symbols.put("final_",27);
-        symbols.put("if_",28);
-        symbols.put("new_",29);
-        symbols.put("print_",30);
-        symbols.put("program_",31);
-        symbols.put("read_",32);
-        symbols.put("return_",33);
-        symbols.put("void_",34);
-        symbols.put("while_",35);
-
-        // end of line token-codes
-        symbols.put("eof",36);
         nextCh();// reads the first character into ch and increments col to 1
     }
 
@@ -176,6 +129,68 @@ public class Scanner {
                 } else
                     t.kind = slash;
                 break;
+            case '+':
+                nextCh();
+                t.kind = plus;
+                break;
+            case '-':
+                nextCh();
+                t.kind = minus;
+                break;
+            case '*':
+                nextCh();
+                t.kind = times;
+                break;
+            case '<':
+                nextCh();
+                if (ch == '=') { nextCh(); t.kind = leq; }
+                else t.kind = lss;
+                break;
+            case '>':
+                nextCh();
+                if (ch == '=') { nextCh(); t.kind = geq; }
+                else t.kind = gtr;
+                break;
+            case '!':
+                nextCh();
+                if (ch == '=') { nextCh(); t.kind = neq; }
+                else{ t.kind = none; ErrorHandler.Handle(new Error(t, "The entered symbol is invalid", null)); }
+                break;
+            case ',':
+                nextCh();
+                t.kind = comma;
+                break;
+            case '%':
+                nextCh();
+                t.kind = rem;
+                break;
+            case '(':
+                nextCh();
+                t.kind = lpar;
+                break;
+            case ')':
+                nextCh();
+                t.kind = rpar;
+                break;
+            case '[':
+                nextCh();
+                t.kind = lbrack;
+                break;
+            case ']':
+                nextCh();
+                t.kind = rbrack;
+                break;
+            case '{':
+                nextCh();
+                t.kind = lbrace;
+                break;
+            case '}':
+                nextCh();
+                t.kind = rbrace;
+                break;
+            case '\'':
+                readCharCon(t);
+                break;
             default:
                 nextCh();
                 t.kind = none;
@@ -185,48 +200,91 @@ public class Scanner {
     } // ch holds the next character that is still unprocessed
 
     private static void readName(Token t) {
-        String ret = "";
-        while ((ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z') && ch !=eofCh) {
-            ret += ch;
+        //put the first letter into t.string
+        StringBuilder builder = new StringBuilder();
+        //read letter and digit and store them into the StringBuilder
+        while (Character.isLetterOrDigit(ch) ||ch == '_' )
+        {
+            builder.append(ch);
             nextCh();
         }
-        t.kind = tokenCode(ret);
-        t.string = ret;
+        // lookup the name in the keyword table
+        int index = searchString(key, builder.toString());
+        if(index >= 0) // if a keywork is found, t.kind is the corresponding keyVal
+            t.kind = keyVal[index];
+        else{ // else t.kind is ident
+            t.kind = ident;
+        }
+        t.string = builder.toString();
     }
 
     private static void readNumber(Token t) {
-        String num = "";
-        int radix = 10;
-        while ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'f')  || (ch >= 'A' && ch <= 'F') && ch != eofCh) {
-            num += ch;
-            try {
-                ch = (char) in.read();
-            } catch (IOException e) {
-                ch = eofCh;
-            }
+        StringBuilder builder = new StringBuilder();
+        // read digits and store them into the StringBuilder
+        while (Character.isDigit(ch)){
+            builder.append(ch);
+            nextCh();
         }
-        if (ch == 'h' || ch == 'H') {
-            radix = 16;
-            try {
-                ch = (char) in.read();
-            } catch (IOException e) {
-                ch = eofCh;
-            }
+        try{ // try to convert the StringBuilder into a number
+            // store the number value to t.val
+            t.val = Integer.parseInt(builder.toString());
         }
-        Integer value = Integer.parseInt(num, radix);
+        catch(Exception e){ // report an error in case of overflow
+            ErrorHandler.Handle(new Error(t, "The entered number doesn't feet int capacity", e));
+        }
         t.kind = number;
-        t.val = value;
     }
 
-    private static int tokenCode(String ret) {
-        String key = ret+"_";
-        int v = ident;
-        if (symbols.containsKey(ret)){
-            v = symbols.get(ret);
+    // -------- Read Char on given specification
+    private static void readCharCon(Token t){
+        char result = 0;
+        //Step 1 => If the character is a letter
+        nextCh();
+        if(Character.isLetter(ch))
+        {
+            t.string = Character.toString(ch);
+            result = ch;
         }
-        if (symbols.containsKey(key)){
-            v = symbols.get(key);
+        //Step 2 => If the character is a slash, then valid character only
+        if(ch == '\\'){
+            nextCh();
+            if(ch == 'n'){ t.string = "\n"; result = '\n'; }
+            if(ch == 't'){ t.string = "\t"; result = '\t'; }
+            if(ch == 'r'){ t.string = "\r"; result = '\r'; }
         }
-        return v;
+        //Step 3 => if the end of the character is following by a "'"
+        nextCh();
+        if(ch == '\''){
+            t.kind = charCon;
+            try{
+                t.val = result;
+            }
+            catch(Exception e){
+                ErrorHandler.Handle(new Error(t, "The entered character couldn't be affected", e));
+            }
+        }
+        else {
+            t.kind = none;
+            ErrorHandler.Handle(new Error(t, "The entered character is invalid", null));
+        }
+        nextCh();
+    }
+
+    // -------- Binary Search over keywords
+    public static int searchString(String[] names, String key) {
+        int first = 0;
+        int last  = names.length-1;
+
+        while (first <= last) {
+            int mid = (first + last) / 2;
+            if (key.compareTo(names[mid]) < 0) {
+                last = mid - 1;
+            } else if (key.compareTo(names[mid]) > 0) {
+                first = mid + 1;
+            } else {
+                return mid;
+            }
+        }
+        return -1;
     }
 }

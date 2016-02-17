@@ -110,6 +110,7 @@ public class TestScanner {
         //String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/BuggyScannerInput.mj";
         if (source != null) {
             try {
+                ErrorHandler.Init(null);
                 Scanner.init(new InputStreamReader(new FileInputStream(source)));
                 do {
                     t = Scanner.next();
@@ -117,6 +118,7 @@ public class TestScanner {
                     switch (t.kind) {
                         case ident:   System.out.println(t.string); break;
                         case number:  System.out.println(t.val); break;
+                        case charCon: System.out.println(t.val); break;
                         default: System.out.println(); break;
                     }
                 } while (t.kind != eof);
