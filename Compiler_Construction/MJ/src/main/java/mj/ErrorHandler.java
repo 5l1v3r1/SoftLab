@@ -9,11 +9,11 @@ package mj;
  */
 public class ErrorHandler {
 
-    public static final String ERRORTEMPLATECONSOLE = "\033[31m\033[44m Error occurred at %s on token of kind %d: \n"
-            + "\033[31m\033[44m Token String: %s \n"
-            + "\033[31m\033[44m Token value: %d \n"
-            + "\033[31m\033[44m Program message: %s \n"
-            + "\033[31m\033[44m Exception message: %s \n"
+    public static final String ERRORTEMPLATECONSOLE = "\033[32m\033[44m Error occurred at %s on token of kind %d: \n"
+            + "\033[32m\033[44m Token String: %s \n"
+            + "\033[32m\033[44m Token value: %d \n"
+            + "\033[32m\033[44m Program message: %s \n"
+            + "\033[32m\033[44m Exception message: %s \n"
             + "------------------------------------------------------------------------------------------- \n";
 
     //The Template used to display images
@@ -31,8 +31,7 @@ public class ErrorHandler {
     /*
      * Singleton Initialiser. Console template defined by default.
      */
-    public static void Init(String Template)
-    {
+    public static void Init(String Template) {
         CURRENTTEMPLATE = Template;
 
         if(Template == null)CURRENTTEMPLATE = ERRORTEMPLATECONSOLE;
