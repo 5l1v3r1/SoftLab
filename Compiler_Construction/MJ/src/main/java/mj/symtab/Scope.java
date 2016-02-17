@@ -1,7 +1,10 @@
+/* MicroJava Symbol Table Scopes (HM 06-12-28)
+   =============================
+*/
 package mj.symtab;
 
-/**
- * Created by hdhamee on 1/6/16.
- */
 public class Scope {
+	public Scope outer;		// to outer scope
+	public Obj   locals;	// to local variables of this scope
+	public int   nVars;     // number of variables in this scope
 }
