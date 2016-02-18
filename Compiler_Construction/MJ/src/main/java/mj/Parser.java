@@ -1,4 +1,5 @@
 package mj;
+
 import mj.symtab.Obj;
 import mj.symtab.Struct;
 import mj.symtab.Tab;
