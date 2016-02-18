@@ -67,10 +67,10 @@ public class Parser {
         sym = la.kind;
         errDist++;
 
-		System.out.print("line " + la.line + ", col " + la.col + ": " + name[sym]);
-		if (sym == ident) System.out.print(" (" + la.string + ")");
-		if (sym == number || sym == charCon) System.out.print(" (" + la.val + ")");
-		System.out.println();
+        System.out.print("line " + la.line + ", col " + la.col + ": " + name[sym]);
+        if (sym == ident) System.out.print(" (" + la.string + ")");
+        if (sym == number || sym == charCon) System.out.print(" (" + la.val + ")");
+        System.out.println();
     }
 
     private static void check(int expected) {
