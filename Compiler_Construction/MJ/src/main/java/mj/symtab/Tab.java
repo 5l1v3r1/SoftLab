@@ -66,7 +66,8 @@ public class Tab {
 		for (Scope s = curScope; s != null; s = s.outer){
 			for (Obj p = s.locals; p != null; p = p.next){
 				if (p.name.equals(name)) return p;
-			}}
+			}
+		}
 		error(name + " is undeclared");
 		return noObj;
 	}
