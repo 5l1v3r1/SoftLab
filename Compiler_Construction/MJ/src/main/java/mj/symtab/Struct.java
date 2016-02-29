@@ -11,10 +11,10 @@ public class Struct {
 		Char  = 2,
 		Arr   = 3,
 		Class = 4;
-	public int    kind;		  // None, Int, Char, Arr, Class
-	public Struct elemType; // Arr: element type
-	public int    nFields;  // Class: number of fields
-	public Obj    fields;   // Class: fields
+	public int    kind;		  // None, Int, Char, Array, Class
+	public Struct elemType;   // Array: element type
+	public int    nFields;    // Class: number of fields
+	public Obj    fields;     // Class: fields
 
 	public Struct(int kind) {
 		this.kind = kind;
