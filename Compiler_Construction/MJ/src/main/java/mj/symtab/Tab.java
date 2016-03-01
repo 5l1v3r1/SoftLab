@@ -7,13 +7,17 @@ import mj.Parser;
 
 public class Tab {
 	public static Scope curScope;	// current scope
-	public static int   curLevel;	// nesting level of current scope
-	public static Obj curMethod;	// current method
-	public static Struct intType;	// predefined types
+	public static int curLevel;	// nesting level of current scope
+	public static Obj curMethod; // current method
+
+	//predefined types
+	public static Struct intType;
 	public static Struct charType;
 	public static Struct nullType;
 	public static Struct noType;
-	public static Obj chrObj;		// predefined objects
+
+	//predefined objects
+	public static Obj chrObj;
 	public static Obj ordObj;
 	public static Obj lenObj;
 	public static Obj noObj;
@@ -23,7 +27,6 @@ public class Tab {
 	}
 
 	//------------------ scope management ---------------------
-
 	public static void openScope() {
 		Scope s = new Scope();
 		s.outer = curScope;
@@ -37,15 +40,14 @@ public class Tab {
 	}
 
 	//------------- Object insertion and retrieval --------------
-
 	// Create a new object with the given kind, name and type
 	// and insert it into the top scope.
 	public static Obj insert(int kind, String name, Struct type) {
-
 		//--- create object node
 		Obj obj = new Obj(kind, name, type);
 		if (kind == Obj.Var) {
-			obj.adr = curScope.nVars; curScope.nVars++;
+			obj.adr = curScope.nVars;
+			curScope.nVars++;
 			obj.level = curLevel;
 		}
 
@@ -56,8 +58,12 @@ public class Tab {
 			last = p; p = p.next;
 		}
 
-		if (last == null) {curScope.locals = obj;}
-		else {last.next = obj;}
+		if (last == null) {
+			curScope.locals = obj;
+		}
+		else {
+			last.next = obj;
+		}
 		return obj;
 	}
 
@@ -84,7 +90,6 @@ public class Tab {
 	}
 
 	//---------------- methods for dumping the symbol table --------------
-
 	public static void dumpStruct(Struct type) {
 		String kind;
 		switch (type.kind) {
@@ -129,7 +134,6 @@ public class Tab {
 	}
 
 	//-------------- initialization of the symbol table ------------
-
 	public static void init() {  // build the universe
 		Obj o;
 		curScope = new Scope();
