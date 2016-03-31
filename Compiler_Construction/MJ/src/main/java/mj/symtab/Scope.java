@@ -1,6 +1,3 @@
-/* MicroJava Symbol Table Scopes (HM 06-12-28)
-   =============================
-*/
 package mj.symtab;
 
 public class Scope {
