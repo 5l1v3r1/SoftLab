@@ -52,15 +52,15 @@ public class Parser {
             "program", "read", "return", "void", "while", "eof"
     };
 
-    private static Token t;			// current token (recently recognized)
-    private static Token la;		// lookahead token
-    private static int sym;			// always contains la.kind
+    private static Token t;		// current token (recently recognized)
+    private static Token la;	// lookahead token
+    private static int sym;		// always contains la.kind
     public  static int errors;  // error counter
     private static int errDist;	// no. of correctly recognized tokens since last error
 
     private static BitSet exprStart, statStart, statSync, statSeqFollow, declStart, declFollow, declSync;
 
-    //------------------- auxiliary methods ----------------------
+    //---auxiliary methods ---
     private static void scan() {
         t = la;
         la = Scanner.next();

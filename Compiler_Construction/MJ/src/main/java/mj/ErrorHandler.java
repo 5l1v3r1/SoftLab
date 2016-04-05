@@ -1,10 +1,7 @@
 package mj;
+
 /*
  * The ErrorHander Class uses the singleton pattern to print error
- */
-
-/**
- *
  * @author Damien
  */
 public class ErrorHandler {
@@ -41,8 +38,7 @@ public class ErrorHandler {
      * Handles error as soon as there are detected.
      * The handler keeps the last error and print the information using the current template.
      */
-    public static void Handle(Error error)
-    {
+    public static void Handle(Error error) {
         lastError = error;
 
         if(lastError.SystemExc != null) systemMessage = lastError.SystemExc.getMessage();
@@ -60,8 +56,7 @@ public class ErrorHandler {
     /*
      * Clean some printed information.
      */
-    private static void Cleanup()
-    {
+    private static void Cleanup() {
         systemMessage = "null";
         tokenformattedString = "null";
     }
