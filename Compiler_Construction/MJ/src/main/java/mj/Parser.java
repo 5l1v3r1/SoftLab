@@ -1,6 +1,7 @@
 package mj;
 
 import mj.symtab.Obj;
+import mj.symtab.Scope;
 import mj.symtab.Struct;
 import mj.symtab.Tab;
 
@@ -160,16 +161,14 @@ public class Parser {
 
         check(assign);
 
-        if(sym == number)
-        {
+        if(sym == number){
             scan();
             if(!constType.equals(Tab.intType)) { error("Invalid Const value for " + declname); }
             current.val = t.val;
 
         }
 
-        if(sym == charCon )
-        {
+        if(sym == charCon ) {
             scan();
             if(!constType.equals(Tab.charType)) { error("Invalid Const value for " + declname); }
             current.val = t.val;

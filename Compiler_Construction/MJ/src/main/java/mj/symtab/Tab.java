@@ -1,14 +1,14 @@
+package mj.symtab;
+
 /*
 This class manages scopes and inserts and retrieves objects.
 */
-package mj.symtab;
-
 import mj.Parser;
 
 public class Tab {
-	public static Scope curScope;	// current scope
+	public static Scope curScope;// current scope
 	public static int curLevel;	// nesting level of current scope
-	public static Obj curMethod; // current method
+	public static Obj curMethod;// current method
 
 	//predefined types
 	public static Struct intType;
@@ -26,7 +26,7 @@ public class Tab {
 		Parser.error(msg);
 	}
 
-	//------------------ scope management ---------------------
+	//-------scope management --------
 	public static void openScope() {
 		Scope s = new Scope();
 		s.outer = curScope;
@@ -39,7 +39,7 @@ public class Tab {
 		curLevel--;
 	}
 
-	//------------- Object insertion and retrieval --------------
+	//----Object insertion and retrieval ------
 	// Create a new object with the given kind, name and type
 	// and insert it into the top scope.
 	public static Obj insert(int kind, String name, Struct type) {
@@ -52,10 +52,15 @@ public class Tab {
 		}
 
 		//--- append object node
-		Obj p = curScope.locals, last = null;
-		while (p != null) {
-			if (p.name.equals(name)){ error(name + " declared twice");}
-			last = p; p = p.next;
+		Obj present = curScope.locals;
+		Obj last = null;
+
+		while (present != null) {
+			if (present.name.equals(name)){
+				error(name + " declared twice");
+			}
+			last = present;
+			present = present.next;
 		}
 
 		if (last == null) {
@@ -133,12 +138,14 @@ public class Tab {
 		{if (o.kind == Obj.Meth || o.kind == Obj.Prog) dumpScope(o.locals);}
 	}
 
-	//-------------- initialization of the symbol table ------------
-	public static void init() {  // build the universe
+	//-----initialization of the symbol table -------
+	// build the universe
+	public static void init() {
 		Obj o;
 		curScope = new Scope();
 		curScope.outer = null;
 		curLevel = -1;
+
 		// create predeclared types
 		intType = new Struct(Struct.Int);
 		charType = new Struct(Struct.Char);
@@ -153,9 +160,11 @@ public class Tab {
 		chrObj = insert(Obj.Meth, "chr", charType);
 		chrObj.locals = new Obj(Obj.Var, "i", intType);
 		chrObj.nPars = 1;
+
 		ordObj = insert(Obj.Meth, "ord", intType);
 		ordObj.locals = new Obj(Obj.Var, "ch", charType);
 		ordObj.nPars = 1;
+
 		lenObj = insert(Obj.Meth, "len", intType);
 		lenObj.locals = new Obj(Obj.Var, "a", new Struct(Struct.Arr, noType));
 		lenObj.nPars = 1;
