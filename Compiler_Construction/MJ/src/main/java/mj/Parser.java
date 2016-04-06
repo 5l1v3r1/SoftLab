@@ -7,6 +7,9 @@ import mj.symtab.Tab;
 
 import java.util.BitSet;
 
+/**
+ * The parser checks only the syntactic correctness of a program
+ */
 public class Parser {
     private static final int  // token codes
             none      = 0,
