@@ -1,9 +1,8 @@
 package mj;
 
 import mj.symtab.Obj;
-import mj.symtab.Scope;
 import mj.symtab.Struct;
-import mj.symtab.Tab;
+import mj.symtab.SymTab;
 
 import java.util.BitSet;
 
@@ -134,18 +133,18 @@ public class Parser {
         check(class_);
         check(ident);
 
-        classEntry = Tab.insert(Obj.Type, t.string, new Struct(Struct.Class));
+        classEntry = SymTab.insert(Obj.Type, t.string, new Struct(Struct.Class));
 
-        Tab.openScope();
+        SymTab.openScope();
 
         check(lbrace);
         while(sym == ident){ VarDecl();}
         check(rbrace);
 
-        classEntry.type.fields = Tab.curScope.locals;
-        classEntry.type.nFields = Tab.curScope.nVars;
+        classEntry.type.fields = SymTab.curScope.locals;
+        classEntry.type.nFields = SymTab.curScope.nVars;
 
-        Tab.closeScope();
+        SymTab.closeScope();
     }
 
     // ConstDecl = "final" Type ident "=" (number | charConst) ";".
@@ -160,20 +159,20 @@ public class Parser {
 
         check(ident);
         declname = t.string;
-        current = Tab.insert(Obj.Con, declname, constType);
+        current = SymTab.insert(Obj.Con, declname, constType);
 
         check(assign);
 
         if(sym == number){
             scan();
-            if(!constType.equals(Tab.intType)) { error("Invalid Const value for " + declname); }
+            if(!constType.equals(SymTab.intType)) { error("Invalid Const value for " + declname); }
             current.val = t.val;
 
         }
 
         if(sym == charCon ) {
             scan();
-            if(!constType.equals(Tab.charType)) { error("Invalid Const value for " + declname); }
+            if(!constType.equals(SymTab.charType)) { error("Invalid Const value for " + declname); }
             current.val = t.val;
 
         }
@@ -231,14 +230,14 @@ public class Parser {
 
         check(ident);
         paramName = t.string;
-        Tab.insert(Obj.Var, paramName, paramType);
+        SymTab.insert(Obj.Var, paramName, paramType);
 
         while(sym == comma){
             scan();
             paramType= Type();
             check(ident);
             paramName = t.string;
-            Tab.insert(Obj.Var, paramName, paramType);
+            SymTab.insert(Obj.Var, paramName, paramType);
         }
     }
 
@@ -257,8 +256,8 @@ public class Parser {
 
         check(ident);
         methName = t.string;
-        Tab.curMethod = Tab.insert(Obj.Meth, methName, methType);
-        Tab.openScope();
+        SymTab.curMethod = SymTab.insert(Obj.Meth, methName, methType);
+        SymTab.openScope();
 
         check(lpar);
         if(sym == ident){ FormPars();}
@@ -266,12 +265,12 @@ public class Parser {
 
         while(sym == ident){ VarDecl();}
 
-        Tab.curMethod.locals = Tab.curScope.locals;
-        Tab.curMethod.nPars = Tab.curScope.nVars;
+        SymTab.curMethod.locals = SymTab.curScope.locals;
+        SymTab.curMethod.nPars = SymTab.curScope.nVars;
 
         Block();
 
-        Tab.closeScope();
+        SymTab.closeScope();
     }
 
     // Mulop = "*" | "/" | "%".
@@ -282,7 +281,7 @@ public class Parser {
 
     // Program = "program" ident {ConstDecl | ClassDecl | VarDecl} '{' {MethodDecl} '}'.
     private static void Program() {
-        Tab.openScope();
+        SymTab.openScope();
         check(program_);
         check(ident);
         for(;;)
@@ -297,7 +296,7 @@ public class Parser {
         check(lbrace);
         while(sym == ident || sym == void_){ MethodDecl();}
         check(rbrace);
-        Tab.closeScope();
+        SymTab.closeScope();
     }
 
     // Relop = "==" | "!=" | ">" | ">=" | "<" | "<=".
@@ -363,7 +362,7 @@ public class Parser {
         Obj currentType;
 
         check(ident);
-        currentType = Tab.find(t.string);
+        currentType = SymTab.find(t.string);
 
         if(currentType.kind != Obj.Type)
             error("Type expected");
@@ -388,12 +387,12 @@ public class Parser {
 
         check(ident);
         varName = t.string;
-        Tab.insert(Obj.Var, varName, varType);
+        SymTab.insert(Obj.Var, varName, varType);
 
         while(sym == comma){
             scan(); check(ident);
             varName = t.string;
-            Tab.insert(Obj.Var, varName, varType);
+            SymTab.insert(Obj.Var, varName, varType);
         }
         check(semicolon);
     }

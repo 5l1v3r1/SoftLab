@@ -1,6 +1,6 @@
 package mj;
 
-import mj.symtab.Tab;
+import mj.symtab.SymTab;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,7 +20,7 @@ public class TestParser {
                 //initialize scanner
                 Scanner.init(new InputStreamReader(new FileInputStream(source)));
                 //initialize symbol table
-                Tab.init();
+                SymTab.init();
                 //start parsing
                 Parser.parse();
                 System.out.println(Parser.errors + " errors detected");

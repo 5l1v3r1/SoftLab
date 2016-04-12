@@ -39,15 +39,15 @@ public class Struct {
 	// Checks if two types are compatible (e.g. in a comparison)
 	public boolean compatibleWith(Struct other) {
 		return this.equals(other)
-				||	this == Tab.nullType && other.isRefType()
-				||	other == Tab.nullType && this.isRefType();
+				||	this == SymTab.nullType && other.isRefType()
+				||	other == SymTab.nullType && this.isRefType();
 	}
 
 	// Checks if an object with type "this" can be assigned to an object with type "dest"
 	public boolean assignableTo(Struct dest) {
 		return this.equals(dest)
-				||	this == Tab.nullType && dest.isRefType()
-				||  this.kind == Arr && dest.kind == Arr && dest.elemType == Tab.noType;
+				||	this == SymTab.nullType && dest.isRefType()
+				||  this.kind == Arr && dest.kind == Arr && dest.elemType == SymTab.noType;
 	}
 
 }

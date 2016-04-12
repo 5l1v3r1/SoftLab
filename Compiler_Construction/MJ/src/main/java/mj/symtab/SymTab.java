@@ -5,7 +5,7 @@ This class manages scopes and inserts and retrieves objects.
 */
 import mj.Parser;
 
-public class Tab {
+public class SymTab {
 	public static Scope curScope;// current scope
 	public static int curLevel;	// nesting level of current scope
 	public static Obj curMethod;// current method
