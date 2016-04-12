@@ -3,7 +3,6 @@ package mj;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.HashMap;
 
 /**
  * @author Hikmat Dhamee
@@ -79,7 +78,7 @@ public class Scanner {
         }
     }
 
-    //--------- Initialize scanner
+    //------- Initialize scanner
     public static void init(Reader r) {
         in = new BufferedReader(r);
         lex = new char[64];

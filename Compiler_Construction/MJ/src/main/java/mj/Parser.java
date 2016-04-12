@@ -144,6 +144,8 @@ public class Parser {
         classEntry.type.fields = SymTab.curScope.locals;
         classEntry.type.nFields = SymTab.curScope.nVars;
 
+        // dump the current scope
+        SymTab.dumpScope(SymTab.curScope.locals);
         SymTab.closeScope();
     }
 
@@ -270,6 +272,8 @@ public class Parser {
 
         Block();
 
+        // dump the current scope
+        SymTab.dumpScope(SymTab.curScope.locals);
         SymTab.closeScope();
     }
 
@@ -296,6 +300,8 @@ public class Parser {
         check(lbrace);
         while(sym == ident || sym == void_){ MethodDecl();}
         check(rbrace);
+        // dump the current scope
+        SymTab.dumpScope(SymTab.curScope.locals);
         SymTab.closeScope();
     }
 
