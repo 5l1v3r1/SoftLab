@@ -1,9 +1,0 @@
-Java Machine Learning Frameworks
- Encog (Multicore and GPU powered)
-	 http://www.heatonresearch.com/encog/
- Neuroph(Lightweight and easy to use)
- 	http://neuroph.sourceforge.net/index.html
-
-
-
-
