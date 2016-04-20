@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ml.nn.and</groupId>
-    <artifactId>LogicFunctions</artifactId>
+    <artifactId>NeurophTour</artifactId>
     <version>1</version>
 
     <repositories>

@@ -1,4 +1,4 @@
-package ml.nn;
+package ml.nn.multilayerperceptron;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
@@ -16,18 +16,39 @@ import java.util.Arrays;
 
 
 /**
- * This sample shows how to create, train, save and load simple Multi Layer Perceptron for the XOR problem.
+ * Multi Layer perceptron (MLP) is a feedforward neural network with one or more layers between input and output layer.
+ *
+ * Feedforward means that data flows in one direction from input to output layer (forward).
+ *
+ * This type of network is trained with the backpropagation learning algorithm. MLPs are widely used for pattern classification,
+ * recognition, prediction and approximation.
+ *
+ * Multi Layer PerceptronNetwork can solve problems which are not linearly separable.
+ *
+ *  * Configuration
+ * -------------
+ *  - Input Function: WeightedSum
+ *  - Transfer Function: TANH
+ *  - Learning Rule: MomentumBackpropagation
+ *  - Network Type: MULTI_LAYER_PERCEPTRON
+ *  - Neuron Type: BiasNeuron (input neuron:2, hidden:3, output neuron:1, total layers: 3)
+ *  - Bias: yes
+ *
+ *
+ * This sample shows how to create, train, save and load simple AND logic function for the MultiLayerPerceptronNetwork.
+ * http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
+ *
+ *
  * This sample shows basics of Neuroph API.
  */
-public class XOR implements LearningEventListener {
+public class MultiLayerPerceptronNetwork implements LearningEventListener {
 
     public static void main(String[] args) {
-        new XOR().run();
+        new MultiLayerPerceptronNetwork().run();
     }
 
     public void run() {
-
-        // create training set (logical XOR function)
+        // create training set (logical AND function)
         DataSet trainingSet = new DataSet(2, 1);
         trainingSet.addRow(new DataSetRow(new double[]{0, 0}, new double[]{0}));
         trainingSet.addRow(new DataSetRow(new double[]{0, 1}, new double[]{1}));
@@ -35,7 +56,7 @@ public class XOR implements LearningEventListener {
         trainingSet.addRow(new DataSetRow(new double[]{1, 1}, new double[]{0}));
 
         // create multi layer perceptron
-        MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.TANH, 2, 3, 1);
+        org.neuroph.nnet.MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.TANH, 2, 3, 1);
 
         // enable batch if using MomentumBackpropagation
         if( myMlPerceptron.getLearningRule() instanceof MomentumBackpropagation )

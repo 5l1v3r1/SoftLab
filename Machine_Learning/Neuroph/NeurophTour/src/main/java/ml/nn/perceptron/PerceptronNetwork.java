@@ -1,4 +1,4 @@
-package ml.nn;
+package ml.nn.perceptron;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
@@ -8,9 +8,28 @@ import org.neuroph.nnet.Perceptron;
 import java.util.Arrays;
 
 /**
- * This sample shows how to create, train, save and load simple Perceptron neural network
+ * PerceptronNetwork is a simple two layer neural network with several neurons in input layer, and one or more neurons in output layer.
+ *
+ * All neurons use step transfer function and network can use LMS based learning algorithm such as PerceptronNetwork Learning or Delta Rule.
+ *
+ * This network can be used as a linear classifier, and it can only be applied to linear separable problems.
+ *
+ * Configuration
+ * -------------
+ *  - Input Function: WeightedSum
+ *  - Transfer Function: STEP
+ *  - Learning Rule: BinaryDeltaRule
+ *  - Network Type: PERCEPTRON
+ *  - Neuron Type: ThresholdNeuron/Neuron (output/input neuron) (input neuron:2, output neuron:1, total layers: 2)
+ *  - Bias: no
+ *
+ * Below example is of AND logic function simulation
+ * http://neuroph.sourceforge.net/tutorials/Perceptron.html
+ *
+ *
+ * Created by hdhamee on 4/20/16.
  */
-public class AND {
+public class PerceptronNetwork {
 
     public static void main(String args[]) {
 

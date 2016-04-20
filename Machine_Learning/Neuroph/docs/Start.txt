@@ -1,0 +1,152 @@
+Java Machine Learning Frameworks
+ Encog (Multicore and GPU powered)
+	 http://www.heatonresearch.com/encog/
+ Neuroph(Lightweight and easy to use)
+ 	http://neuroph.sourceforge.net/index.html
+        http://neuroph.sourceforge.net/documentation.html
+
+Neural Netwrok(NN) Steps
+------------------------
+1. Create Perceptron network
+2. Create training set
+3. Train network
+4. Test trained network 
+5. Save tested network
+6. Use tested network for future data
+
+We can implement above 1-5 steps using Java Neuroph Studio or Java neuroph library.
+
+
+NN Types(org.neuroph.nnet)
+---------------------------
+ADALINE("Adaline")
+PERCEPTRON("Perceptron")
+MULTI_LAYER_PERCEPTRON("Multi Layer Perceptron")
+HOPFIELD("Hopfield")
+KOHONEN("Kohonen")
+NEURO_FUZZY_REASONER("Neuro Fuzzy Reasoner")
+SUPERVISED_HEBBIAN_NET("Supervised Hebbian network")
+UNSUPERVISED_HEBBIAN_NET("Unsupervised Hebbian network")
+COMPETITIVE("Competitive")
+MAXNET("Maxnet")
+INSTAR("Instar")
+OUTSTAR("Outstar")
+RBF_NETWORK("RBF Network")
+BAM("BAM")
+BOLTZMAN("Boltzman")
+COUNTERPROPAGATION("CounterPropagation")
+INSTAR_OUTSTAR("InstarOutstar")
+PCA_NETWORK("PCANetwork")
+RECOMMENDER("Recommender")
+
+Neuron Types(org.neuroph.nnet.comp)
+-----------------------------------
+Neuron properties
+    "inputFunction": eg. WeightedSum
+    "transferFunction": eg. Linear
+    "neuronType": eg. Neuron
+    "useBias": eg. yes/no
+
+ThresholdNeuron
+CompetitiveNeuron
+DelayedNeuron
+InputNeuron
+InputOutputNeuron
+ThresholdNeuron
+
+
+Neuron InputFunctions(org.neuroph.core.input)
+---------------------------------------------
+And --	Performs logic AND operation on input vector.
+Difference -- Performs the vector difference operation on input and weight vector.
+InputFunction -- Neuron's input function.
+Max	-- Performs max function on input vector
+Min	-- Performs min function on input vector
+Or	-- Performs logic OR operation on input vector.
+Product -- Performs multiplication of all input vector elements.
+Sum	-- Performs summing of all input vector elements.
+SumSqr -- Calculates squared sum of all input vector elements.
+WeightedSum -- Optimized version of weighted input function
+
+
+Neuron Transform Functions(org.neuroph.util)
+---------------------------------------------
+A transfer/activation function, which takes the weighted sum (i.e.output of input function) as input and calculates the output
+of the neuron using a simple step (i.e. any one of below) function.
+eg. if the weighted sum is greater then zero, the function outputs 1; otherwise, it outputs 0.
+
+LINEAR("Linear")
+RAMP("Ramp")
+STEP("Step")
+SIGMOID("Sigmoid")
+TANH("Tanh")
+GAUSSIAN("Gaussian")
+TRAPEZOID("Trapezoid")
+SGN("Sgn")
+SIN("Sin")
+LOG("Log")
+
+
+Learning Types(org.neuroph.core.learning)
+-----------------------------------------
+IterativeLearning
+    SupervisedLearning
+        LMS
+            SigmoidDeltaRule
+                BackPropagation
+                MomentumBackPropagation
+            SupervisedHebbianLearning
+    UnsupervisedLearning
+        CompetitiveLearning
+        UnsupervisedHebbianLearning
+            OjaLearning
+
+
+
+
+Some real-world applications of Neuroph
+---------------------------------------
+ - Support for supervised and unsupervised learning rules
+ - An easy-to-follow structure and logic.
+ - Java & Neural Network IDE, Neuroph Studio, based on NetBeans Platform
+ - Image recognition support
+ - OCR support
+ - Stock market prediction sample
+ - Learning vizualisation samples
+ - Data normalization
+ - Simple microbenchmarking framework
+
+ Neuron Network Event Types
+ --------------------------
+ CALCULATED
+ LAYER_ADDED
+ LAYER_REMOVED
+ NEURON_ADDED
+ NEURON_REMOVED
+ CONNECTION_ADDED
+ CONNECTION_REMOVED
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
