@@ -35,7 +35,7 @@ import java.util.Arrays;
  *  - Bias: yes
  *
  *
- * This sample shows how to create, train, save and load simple AND logic function for the MultiLayerPerceptronNetwork.
+ * This sample shows how to create, train, save and load simple XOR logic function for the MultiLayerPerceptronNetwork.
  * http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
  *
  *
@@ -48,7 +48,7 @@ public class MultiLayerPerceptronNetwork implements LearningEventListener {
     }
 
     public void run() {
-        // create training set (logical AND function)
+        // create training set (logical XOR function)
         DataSet trainingSet = new DataSet(2, 1);
         trainingSet.addRow(new DataSetRow(new double[]{0, 0}, new double[]{0}));
         trainingSet.addRow(new DataSetRow(new double[]{0, 1}, new double[]{1}));
