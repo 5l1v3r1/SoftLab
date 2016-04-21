@@ -75,16 +75,16 @@ A transfer/activation function, which takes the weighted sum (i.e.output of inpu
 of the neuron using a simple step (i.e. any one of below) function.
 eg. if the weighted sum is greater then zero, the function outputs 1; otherwise, it outputs 0.
 
-LINEAR("Linear")
-RAMP("Ramp")
-STEP("Step")
-SIGMOID("Sigmoid")
-TANH("Tanh")
-GAUSSIAN("Gaussian")
-TRAPEZOID("Trapezoid")
-SGN("Sgn")
-SIN("Sin")
-LOG("Log")
+LINEAR("Linear") -- slop * net (`slop`: of linear function and `net`: given by input function) : y=mx
+RAMP("Ramp")  -- net < this.xLow?this.yLow:(net > this.xHigh?this.yHigh:this.slope * net)
+STEP("Step") -- net > 0.0D?this.yHigh:this.yLow
+SIGMOID("Sigmoid") -- net > 100.0D?1.0D:net < -100.0D?0.0D:double den = 1.0D + Math.exp(-this.slope * net);output = 1.0D / den;return this.output;
+TANH("Tanh") --
+GAUSSIAN("Gaussian") -- Math.exp(-Math.pow(net, 2.0D) / (2.0D * Math.pow(this.sigma, 2.0D)));
+TRAPEZOID("Trapezoid") -- net >= this.leftHigh && net <= this.rightHigh?1.0D:(net > this.leftLow && net < this.leftHigh?(net - this.leftLow) / (this.leftHigh - this.leftLow):(net > this.rightHigh && net < this.rightLow?(this.rightLow - net) / (this.rightLow - this.rightHigh):0.0D))
+SGN("Sgn") -- net > 0.0D?1.0D:-1.0D
+SIN("Sin") -- Math.sin(net)
+LOG("Log") -- Math.log(net)
 
 
 Learning Types(org.neuroph.core.learning)
