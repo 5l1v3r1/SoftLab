@@ -27,7 +27,7 @@ import java.util.Arrays;
  *  - Bias: yes
  *
  *
- * Below example is of PerceptronNetwork logic function simulation
+ * Below example is of AND logic function simulation
  * http://neuroph.sourceforge.net/tutorials/Adaline.html
  *
  *
@@ -36,7 +36,7 @@ import java.util.Arrays;
 public class AdalineNetwork {
     public static void main(String args[]) {
 
-        // create training set (logical PerceptronNetwork function)
+        // create training set (logical AND function)
         DataSet trainingSet = new DataSet(2, 1);
         trainingSet.addRow(new DataSetRow(new double[]{0, 0}, new double[]{0}));
         trainingSet.addRow(new DataSetRow(new double[]{0, 1}, new double[]{0}));

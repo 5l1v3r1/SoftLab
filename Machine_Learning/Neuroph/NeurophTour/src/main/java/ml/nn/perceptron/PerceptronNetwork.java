@@ -14,6 +14,15 @@ import java.util.Arrays;
  *
  * This network can be used as a linear classifier, and it can only be applied to linear separable problems.
  *
+ * The perceptron was suggest by  Rosenblatt in 1958.
+ * It uses an iterative learning  procedure which can be proven  to converge to the correct
+ * weights for linearly separable  data.
+ *
+ * Weights are changed only when an error  occurs.
+ *       wi(new) = wi(old) + xiαt
+ *       t is either +1 or -1;  α is the learning rate [0.1].
+ *
+ *
  * Configuration
  * -------------
  *  - Input Function: WeightedSum
