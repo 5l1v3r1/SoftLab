@@ -56,7 +56,7 @@ public class MultiLayerPerceptronNetwork implements LearningEventListener {
         trainingSet.addRow(new DataSetRow(new double[]{1, 1}, new double[]{0}));
 
         // create multi layer perceptron
-        org.neuroph.nnet.MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.TANH, 2, 3, 1);
+        MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.TANH, 2, 3, 1);
 
         // enable batch if using MomentumBackpropagation
         if( myMlPerceptron.getLearningRule() instanceof MomentumBackpropagation )

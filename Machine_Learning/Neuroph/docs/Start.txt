@@ -1,8 +1,8 @@
 Java Machine Learning Frameworks
- Encog (Multicore and GPU powered)
-	 http://www.heatonresearch.com/encog/
- Neuroph(Lightweight and easy to use)
- 	http://neuroph.sourceforge.net/index.html
+    Encog (Multicore and GPU powered)
+        http://www.heatonresearch.com/encog/
+    Neuroph(Lightweight and easy to use)
+        http://neuroph.sourceforge.net/index.html
         http://neuroph.sourceforge.net/documentation.html
 
 Neural Netwrok(NN) Steps
@@ -42,10 +42,10 @@ RECOMMENDER("Recommender")
 Neuron Types(org.neuroph.nnet.comp)
 -----------------------------------
 Neuron properties
-    "inputFunction": eg. WeightedSum
-    "transferFunction": eg. Linear
-    "neuronType": eg. Neuron
-    "useBias": eg. yes/no
+"inputFunction": eg. WeightedSum
+"transferFunction": eg. Linear
+"neuronType": eg. Neuron
+"useBias": eg. yes/no
 
 ThresholdNeuron
 CompetitiveNeuron
@@ -90,45 +90,62 @@ LOG("Log") -- Math.log(net)
 Learning Types(org.neuroph.core.learning)
 -----------------------------------------
 IterativeLearning
-    SupervisedLearning
-        LMS
-            SigmoidDeltaRule
-                BackPropagation
-                MomentumBackPropagation
-            SupervisedHebbianLearning
-    UnsupervisedLearning
-        CompetitiveLearning
-        UnsupervisedHebbianLearning
-            OjaLearning
+SupervisedLearning
+LMS
+    SigmoidDeltaRule
+        BackPropagation
+        MomentumBackPropagation
+    SupervisedHebbianLearning
+UnsupervisedLearning
+    CompetitiveLearning
+    UnsupervisedHebbianLearning
+        OjaLearning
 
 
 
 
 Some real-world applications of Neuroph
 ---------------------------------------
- - Support for supervised and unsupervised learning rules
- - An easy-to-follow structure and logic.
- - Java & Neural Network IDE, Neuroph Studio, based on NetBeans Platform
- - Image recognition support
- - OCR support
- - Stock market prediction sample
- - Learning vizualisation samples
- - Data normalization
- - Simple microbenchmarking framework
+- Support for supervised and unsupervised learning rules
+- An easy-to-follow structure and logic.
+- Java & Neural Network IDE, Neuroph Studio, based on NetBeans Platform
+- Image recognition support
+- OCR support
+- Stock market prediction sample
+- Learning vizualisation samples
+- Data normalization
+- Simple microbenchmarking framework
 
- Neuron Network Event Types
- --------------------------
- CALCULATED
- LAYER_ADDED
- LAYER_REMOVED
- NEURON_ADDED
- NEURON_REMOVED
- CONNECTION_ADDED
- CONNECTION_REMOVED
-
-
+Neuron Network Event Types
+--------------------------
+CALCULATED
+LAYER_ADDED
+LAYER_REMOVED
+NEURON_ADDED
+NEURON_REMOVED
+CONNECTION_ADDED
+CONNECTION_REMOVED
 
 
+
+Data Normalization Techniques
+=============================
+The main goal of data normalization is to guarantee the quality of the data before it is fed to any learning algorithm.
+
+It can be used to scale the data in the same range of values for each input feature in order to minimize bias within the
+neural network for one feature to another.
+
+Data normalization can also speed up training time by starting the training process for each feature within the same scale.
+
+It is especially useful for modeling application where the inputs are generally on widely different scales.
+
+Different techniques can use different rules such as
+1. min-max
+2. Z-score
+3. decimal scaling
+4. Median normalization
+5. etc..etc..
+For more explanation -- set Papers/IJCISIM_24
 
 
 
