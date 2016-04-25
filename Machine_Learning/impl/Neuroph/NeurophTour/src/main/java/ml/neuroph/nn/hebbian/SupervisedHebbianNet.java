@@ -1,45 +1,37 @@
-package ml.nn.perceptron;
+package ml.neuroph.nn.hebbian;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
-import org.neuroph.nnet.Perceptron;
+import org.neuroph.nnet.SupervisedHebbianNetwork;
 
 import java.util.Arrays;
 
 /**
- * PerceptronNetwork is a simple two layer neural network with several neurons in input layer, and one or more neurons in output layer.
+ * Supervised and unsupervised Hebbian networks are feedforward networks that use Hebbian learning rule.
  *
- * All neurons use step transfer function and network can use LMS based learning algorithm such as PerceptronNetwork Learning or Delta Rule.
+ * From the point of view of artificial neural networks,Hebb's principle can be described as a method of
+ * determining how to alter the weights between neurons based on their activation.
  *
- * This network can be used as a linear classifier, and it can only be applied to linear separable problems.
- *
- * The perceptron was suggest by  Rosenblatt in 1958.
- * It uses an iterative learning  procedure which can be proven  to converge to the correct
- * weights for linearly separable  data.
- *
- * Weights are changed only when an error  occurs.
- *       wi(new) = wi(old) + xiαt
- *       t is either +1 or -1;  α is the learning rate [0.1].
- *
+ * The weight between two neurons will increase if the two neurons activate simultaneously,
+ * and it is reduced if they activate separately.
  *
  * Configuration
  * -------------
  *  - Input Function: WeightedSum
- *  - Transfer Function: STEP
- *  - Learning Rule: BinaryDeltaRule
- *  - Network Type: PERCEPTRON
- *  - Neuron Type: ThresholdNeuron/Neuron (output/input neuron) (input neuron:2, output neuron:1, total layers: 2)
+ *  - Transfer Function: RAMP
+ *  - Learning Rule: SupervisedHebbianLearning
+ *  - Network Type: SUPERVISED_HEBBIAN_NET
+ *  - Neuron Type: Neuron (input neuron:2, output neuron:1, total layers: 2)
  *  - Bias: no
  *
  * Below example is of AND logic function simulation
- * http://neuroph.sourceforge.net/tutorials/Perceptron.html
+ * http://neuroph.sourceforge.net/tutorials/Hebbian.html
  *
  *
  * Created by hdhamee on 4/20/16.
  */
-public class PerceptronNetwork {
-
+public class SupervisedHebbianNet {
     public static void main(String args[]) {
 
         // create training set (logical AND function)
@@ -50,7 +42,7 @@ public class PerceptronNetwork {
         trainingSet.addRow(new DataSetRow(new double[]{1, 1}, new double[]{1}));
 
         // create perceptron neural network
-        NeuralNetwork myPerceptron = new Perceptron(2, 1);
+        NeuralNetwork myPerceptron = new SupervisedHebbianNetwork(2, 1);
 
         // learn the training set
         myPerceptron.learn(trainingSet);

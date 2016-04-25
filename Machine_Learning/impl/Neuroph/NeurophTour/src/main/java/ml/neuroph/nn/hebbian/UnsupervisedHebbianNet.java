@@ -1,9 +1,9 @@
-package ml.nn.hebbian;
+package ml.neuroph.nn.hebbian;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
-import org.neuroph.nnet.SupervisedHebbianNetwork;
+import org.neuroph.nnet.UnsupervisedHebbianNetwork;
 
 import java.util.Arrays;
 
@@ -19,11 +19,12 @@ import java.util.Arrays;
  * Configuration
  * -------------
  *  - Input Function: WeightedSum
- *  - Transfer Function: RAMP
- *  - Learning Rule: SupervisedHebbianLearning
- *  - Network Type: SUPERVISED_HEBBIAN_NET
+ *  - Transfer Function: LINEAR
+ *  - Learning Rule: UnsupervisedHebbianLearning
+ *  - Network Type: UNSUPERVISED_HEBBIAN_NET
  *  - Neuron Type: Neuron (input neuron:2, output neuron:1, total layers: 2)
  *  - Bias: no
+ *
  *
  * Below example is of AND logic function simulation
  * http://neuroph.sourceforge.net/tutorials/Hebbian.html
@@ -31,7 +32,7 @@ import java.util.Arrays;
  *
  * Created by hdhamee on 4/20/16.
  */
-public class SupervisedHebbianNet {
+public class UnsupervisedHebbianNet {
     public static void main(String args[]) {
 
         // create training set (logical AND function)
@@ -42,7 +43,7 @@ public class SupervisedHebbianNet {
         trainingSet.addRow(new DataSetRow(new double[]{1, 1}, new double[]{1}));
 
         // create perceptron neural network
-        NeuralNetwork myPerceptron = new SupervisedHebbianNetwork(2, 1);
+        NeuralNetwork myPerceptron = new UnsupervisedHebbianNetwork(2, 1);
 
         // learn the training set
         myPerceptron.learn(trainingSet);
