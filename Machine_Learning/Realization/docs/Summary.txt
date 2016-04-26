@@ -1,9 +1,14 @@
+Comparative analysis of ANN based,Interpolation based and Genetic algorithm based prediction
+*******************************************************************************************
+
 Java Machine Learning Frameworks
     Encog (Multicore and GPU powered)
         http://www.heatonresearch.com/encog/
     Neuroph(Lightweight and easy to use)
         http://neuroph.sourceforge.net/index.html
         http://neuroph.sourceforge.net/documentation.html
+    The Apache Commons Mathematics Library
+    https://commons.apache.org/proper/commons-math/userguide/index.html
 
 Neural Netwrok(NN) Steps
 ------------------------
@@ -146,6 +151,29 @@ Different techniques can use different rules such as
 4. Median normalization
 5. etc..etc..
 For more explanation -- set Papers/IJCISIM_24
+
+
+Apache Commons Math API Usage are
+=================================
+- Statistics
+- Data Generation
+- Linear Algebra
+- Numerical Analysis [useful for interpolation/extrapolation based prediction]
+- Special Functions
+- Utilities
+- Complex Numbers
+- Distributions
+- Fractions
+- Transform Methods
+- Geometry
+- Optimization
+- Curve Fitting
+- Least Squares
+- Ordinary Differential Equations
+- Genetic Algorithms
+- Filters
+- Machine Learning
+- Exceptions
 
 
 
