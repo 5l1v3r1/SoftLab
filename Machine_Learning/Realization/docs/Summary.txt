@@ -1,5 +1,7 @@
 Comparative analysis of ANN based,Interpolation based and Genetic algorithm based prediction
-*******************************************************************************************
+********************************************************************************************
+Training neural network with genetic algorithms for forecasting the stock price index
+********************************************************************************************
 
 Java Machine Learning Frameworks
     Encog (Multicore and GPU powered)
@@ -155,7 +157,7 @@ For more explanation -- set Papers/IJCISIM_24
 
 Apache Commons Math API Usage are
 =================================
-- Statistics
+- Statistics (useful for Linear/other regression based prediction)
 - Data Generation
 - Linear Algebra
 - Numerical Analysis [useful for interpolation/extrapolation based prediction]
@@ -170,9 +172,9 @@ Apache Commons Math API Usage are
 - Curve Fitting
 - Least Squares
 - Ordinary Differential Equations
-- Genetic Algorithms
+- Genetic Algorithms (useful for training nn and also for prediction)
 - Filters
-- Machine Learning
+- Machine Learning (ANN based prediction)
 - Exceptions
 
 
