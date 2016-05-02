@@ -4,5 +4,5 @@ https://www.wunderlist.com: For keeping to-do-list up to date
 Wunderlist.com --> Mobile App + Online
 
 [2] Write a PhD Thesis 
-http://www.sciplore.org/2010/how-to-write-a-phd-thesis/ http://www.docear.org/2014/01/15/comprehensive-comparison-o-referen
--managers-mendeley-vs-zotero-vs-docear/
+http://www.sciplore.org/2010/how-to-write-a-phd-thesis
+http://www.docear.org/2014/01/15/comprehensive-comparison-o-referen-managers-mendeley-vs-zotero-vs-docear
