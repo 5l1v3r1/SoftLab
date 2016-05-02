@@ -13,7 +13,3 @@ ACM Digital Library : http://portal.acm.org/dl.cfm
 IEEE Xplore : http://ieeexplore.ieee.org
 ScienceDirect : http://www.sciencedirect.com
 Emerald Insight : http://www.emeraldinsight.com
-
-[2] Write a PhD Thesis 
-http://www.sciplore.org/2010/how-to-write-a-phd-thesis/
-http://www.docear.org/2014/01/15/comprehensive-comparison-of-reference-managers-mendeley-vs-zotero-vs-docear/
