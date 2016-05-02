@@ -1,0 +1,15 @@
+
+[1] Literature Management
+
+Literatur
+---------
+Published writings in a particular style on a particular subject ----> called paper
+
+Literatur(paper) search sites
+-----------------------------
+Google Scholar : http://scholar.google.com 
+Springerlink : http://www.springerlink.com
+ACM Digital Library : http://portal.acm.org/dl.cfm
+IEEE Xplore : http://ieeexplore.ieee.org
+ScienceDirect : http://www.sciencedirect.com
+Emerald Insight : http://www.emeraldinsight.com
