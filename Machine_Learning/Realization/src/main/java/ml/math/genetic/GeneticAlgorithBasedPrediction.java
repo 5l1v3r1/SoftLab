@@ -11,7 +11,6 @@ import java.util.List;
  */
 public class GeneticAlgorithBasedPrediction {
     // parameters for the GA
-    private static final int DIMENSION = 50;
     private static final int POPULATION_SIZE = 50;
     private static final int TOURNAMENT_ARITY = 5;
     private static final int NUM_GENERATIONS = 50;
@@ -33,6 +32,7 @@ public class GeneticAlgorithBasedPrediction {
 
         // best chromosome from the final population
         Chromosome bestFinal = finalPopulation.getFittestChromosome();
+        System.out.println(bestFinal.toString());
     }
 
     /**
@@ -42,7 +42,7 @@ public class GeneticAlgorithBasedPrediction {
         List<Chromosome> popList = new LinkedList();
 
         for (int i=0; i<POPULATION_SIZE; i++) {
-            BinaryChromosome randChrom = new FindOnes(BinaryChromosome.randomBinaryRepresentation(DIMENSION));
+            RandomKey randChrom = new FindOnes(RandomKey.randomPermutation(5));
             popList.add(randChrom);
         }
         return new ElitisticListPopulation(popList, popList.size(), ELITISM_RATE);
@@ -50,33 +50,23 @@ public class GeneticAlgorithBasedPrediction {
 
 
     /**
-     * Chromosomes represented by a binary chromosome.
+     * Chromosomes represented by a RandomKey chromosome.
      *
      * The goal is to set all bits (genes) to 1.
      */
-    private static class FindOnes extends BinaryChromosome {
+    private static class FindOnes extends RandomKey {
 
-        public FindOnes(List<Integer> representation) {
+        public FindOnes(List<Double> representation) {
             super(representation);
         }
 
-        /**
-         * Returns number of elements != 0
-         */
         public double fitness() {
-            int num = 0;
-            for (int val : this.getRepresentation()) {
-                if (val != 0)
-                    num++;
-            }
-            // number of elements >= 0
-            return num;
+            return getRepresentation().size();
         }
 
         @Override
         public AbstractListChromosome<Integer> newFixedLengthChromosome(List chromosomeRepresentation) {
             return new FindOnes(chromosomeRepresentation);
         }
-
     }
 }
