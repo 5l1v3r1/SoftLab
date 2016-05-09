@@ -1,4 +1,4 @@
-package prediction.interpolation;
+package realization.prediction.interpolation;
 
 import org.apache.commons.math3.analysis.UnivariateFunction;
 import org.apache.commons.math3.analysis.interpolation.*;

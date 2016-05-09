@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ml.realization</groupId>
+    <groupId>realization.prediction</groupId>
     <artifactId>realization</artifactId>
     <description>Machine Learning Realization</description>
     <version>1</version>
@@ -17,12 +17,13 @@
     </repositories>
 
     <dependencies>
-
+        <!--For ANN based realization.prediction/machine learning-->
         <dependency>
             <groupId>org.neuroph</groupId>
             <artifactId>neuroph-core</artifactId>
             <version>2.9</version>
         </dependency>
+        <!--For Statistical/Numerical realization.prediction/analysis-->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>

@@ -1,4 +1,4 @@
-package prediction.neuroph.stockpriceprediction;
+package realization.prediction.neuroph.stockpriceprediction;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
@@ -13,7 +13,7 @@ import java.io.*;
 import java.util.LinkedList;
 
 /**
- *  Neural networks have been applied to time-series prediction for many years from forecasting stock prices and sunspot
+ *  Neural networks have been applied to time-series realization.prediction for many years from forecasting stock prices and sunspot
  *  activity to predicting the growth of tree rings
  *
  *  The stock market courses, as well as the consumption of energy can be predicted to be able to make decisions.

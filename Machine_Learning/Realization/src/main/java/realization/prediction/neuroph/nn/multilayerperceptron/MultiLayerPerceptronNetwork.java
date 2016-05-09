@@ -1,4 +1,4 @@
-package prediction.neuroph.nn.multilayerperceptron;
+package realization.prediction.neuroph.nn.multilayerperceptron;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
@@ -21,7 +21,7 @@ import java.util.Arrays;
  * Feedforward means that data flows in one direction from input to output layer (forward).
  *
  * This type of network is trained with the backpropagation learning algorithm. MLPs are widely used for pattern classification,
- * recognition, prediction and approximation.
+ * recognition, realization.prediction and approximation.
  *
  * Multi Layer PerceptronNetwork can solve problems which are not linearly separable.
  *

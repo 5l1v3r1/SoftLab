@@ -1,4 +1,4 @@
-Comparative analysis of ANN based,Interpolation based and Genetic algorithm based prediction
+Comparative analysis of ANN based,Interpolation based and Genetic algorithm based realization.prediction
 ********************************************************************************************
 Training neural network with genetic algorithms for forecasting the stock price index
 ********************************************************************************************
@@ -118,7 +118,7 @@ Some real-world applications of Neuroph
 - Java & Neural Network IDE, Neuroph Studio, based on NetBeans Platform
 - Image recognition support
 - OCR support
-- Stock market prediction sample
+- Stock market realization.prediction sample
 - Learning vizualisation samples
 - Data normalization
 - Simple microbenchmarking framework
@@ -157,10 +157,10 @@ For more explanation -- set Papers/IJCISIM_24
 
 Apache Commons Math API Usage are
 =================================
-- Statistics (useful for Linear/other regression based prediction)
+- Statistics (useful for Linear/other regression based realization.prediction)
 - Data Generation
 - Linear Algebra
-- Numerical Analysis [useful for interpolation/extrapolation based prediction]
+- Numerical Analysis [useful for interpolation/extrapolation based realization.prediction]
 - Special Functions
 - Utilities
 - Complex Numbers
@@ -172,9 +172,9 @@ Apache Commons Math API Usage are
 - Curve Fitting
 - Least Squares
 - Ordinary Differential Equations
-- Genetic Algorithms (useful for training nn and also for prediction)
+- Genetic Algorithms (useful for training nn and also for realization.prediction)
 - Filters
-- Machine Learning (ANN based prediction)
+- Machine Learning (ANN based realization.prediction)
 - Exceptions
 
 

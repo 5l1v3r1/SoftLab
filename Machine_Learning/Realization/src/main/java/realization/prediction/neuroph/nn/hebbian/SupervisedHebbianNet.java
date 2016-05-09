@@ -1,4 +1,4 @@
-package prediction.neuroph.nn.hebbian;
+package realization.prediction.neuroph.nn.hebbian;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;

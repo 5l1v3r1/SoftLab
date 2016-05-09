@@ -1,4 +1,4 @@
-package prediction.stat;
+package realization.prediction.stat;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 

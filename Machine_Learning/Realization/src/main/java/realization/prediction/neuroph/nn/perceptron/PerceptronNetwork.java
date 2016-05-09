@@ -1,39 +1,45 @@
-package prediction.neuroph.nn.adaline;
+package realization.prediction.neuroph.nn.perceptron;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
-import org.neuroph.nnet.Adaline;
+import org.neuroph.nnet.Perceptron;
 
 import java.util.Arrays;
 
 /**
- * AdalineNetwork (ADAptive LInear NEuron) is simple two-layer neural network with only input and output layer,
- * having a single output neuron. Output neuron receives input from all input neurons.
+ * PerceptronNetwork is a simple two layer neural network with several neurons in input layer, and one or more neurons in output layer.
  *
- * All neurons in network have linear transfer functions (y = kx+n),
- * and network use Least Mean Squares (LMS) algorithm for learning.
+ * All neurons use step transfer function and network can use LMS based learning algorithm such as PerceptronNetwork Learning or Delta Rule.
  *
- * This network can be used to recognize patterns, data filtering, or to approximate linear function.
- * Note that this network can be applied only to linear problems.
+ * This network can be used as a linear classifier, and it can only be applied to linear separable problems.
+ *
+ * The perceptron was suggest by  Rosenblatt in 1958.
+ * It uses an iterative learning  procedure which can be proven  to converge to the correct
+ * weights for linearly separable  data.
+ *
+ * Weights are changed only when an error  occurs.
+ *       wi(new) = wi(old) + xiαt
+ *       t is either +1 or -1;  α is the learning rate [0.1].
+ *
  *
  * Configuration
  * -------------
- *  - Input Function: WeightedSum (Default)
- *  - Transfer Function: LINEAR(for input neuron) RAMP(for output neuron)
- *  - Learning Rule: LMS
- *  - Network Type: ADALINE
- *  - Neuron Type: BiasNeuron (input neuron:2, output neuron:1, total layers: 2)
- *  - Bias: yes
- *
+ *  - Input Function: WeightedSum
+ *  - Transfer Function: STEP
+ *  - Learning Rule: BinaryDeltaRule
+ *  - Network Type: PERCEPTRON
+ *  - Neuron Type: ThresholdNeuron/Neuron (output/input neuron) (input neuron:2, output neuron:1, total layers: 2)
+ *  - Bias: no
  *
  * Below example is of AND logic function simulation
- * http://neuroph.sourceforge.net/tutorials/Adaline.html
+ * http://neuroph.sourceforge.net/tutorials/Perceptron.html
  *
  *
  * Created by hdhamee on 4/20/16.
  */
-public class AdalineNetwork {
+public class PerceptronNetwork {
+
     public static void main(String args[]) {
 
         // create training set (logical AND function)
@@ -44,7 +50,7 @@ public class AdalineNetwork {
         trainingSet.addRow(new DataSetRow(new double[]{1, 1}, new double[]{1}));
 
         // create perceptron neural network
-        NeuralNetwork myPerceptron = new Adaline(2);
+        NeuralNetwork myPerceptron = new Perceptron(2, 1);
 
         // learn the training set
         myPerceptron.learn(trainingSet);

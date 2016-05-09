@@ -1,4 +1,4 @@
-package prediction.mlalgorithms;
+package realization.prediction.mlalgorithms;
 
 /**
  * https://commons.apache.org/proper/commons-math/userguide/ml.html
