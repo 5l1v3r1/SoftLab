@@ -216,8 +216,31 @@ Data Mining System Classification
 
 Classification and Prediction
 ------------------------------
+Two steps:
+1. Classification --- Building the Classifier or Model
+2. Prediction --- Using Classifier/Model for Classification/Prediction
+
+Classification:
+- This step is the learning step or the learning phase
+- In this step the classification algorithms build the classifier
+- The classifier is built from the training set made up of database tuples and their associated class labels.
+- Each tuple that constitutes the training set is referred to as a category or class.
+Classification Algorithms
+- Bayesian Classification
+- Rule-based Classification
+- Genetic Algorithms
+- Rough Set Approach
+- Fuzzy Set Approaches
+
+Prediction:
+Use the classifier to predict the class for new unknown data
 
 
+Decision Tree Induction
+-----------------------
+- A decision tree is a structure that includes a root node, branches, and leaf nodes.
+- Each internal node denotes a test on an attribute, each branch denotes the outcome of a test,
+  and each leaf node holds a class label.
 
 
 
