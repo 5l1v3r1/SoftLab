@@ -2,6 +2,8 @@ Comparative analysis of ANN based,Interpolation based and Genetic algorithm base
 ********************************************************************************************
 Training neural network with genetic algorithms for forecasting the stock price index
 ********************************************************************************************
+Removing bad data using Interpolation for stock/heart disease prediction
+********************************************************************************************
 
 Java Machine Learning Frameworks
     Encog (Multicore and GPU powered)
@@ -177,6 +179,43 @@ Apache Commons Math API Usage are
 - Machine Learning (ANN based realization.prediction)
 - Exceptions
 
+
+Data Mining Techniques
+=======================
+Main Highlights
+---------------
+- Characterization
+- Association and Correlation Analysis
+- Classification & Prediction
+- Cluster analysis
+- Outlier analysis
+- Evolution analysis
+- Decision Tree Induction
+
+Data Mining procedure
+---------------------
+    Data Extraction-->Data Cleaning-->Data Integration-->Data Transformation-->Data Mining-->
+    Pattern Evaluation-->Data Presentation.
+
+Data Mining Application
+------------------------
+- Market Analysis and Management
+- Corporate Analysis & Risk Management
+- Fraud Detection
+- Production Control
+- Science Exploration
+
+Data Mining System Classification
+----------------------------------
+- Database Technology
+- Statistics
+- Machine Learning
+- Information Science
+- Visualization
+- Other Disciplines
+
+Classification and Prediction
+------------------------------
 
 
 
