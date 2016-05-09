@@ -1,4 +1,4 @@
-package ml.math.genetic;
+package prediction.genetic;
 
 import org.apache.commons.math3.genetics.*;
 

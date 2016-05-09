@@ -1,4 +1,4 @@
-package ml.neuroph.nn.hopfield;
+package prediction.neuroph.nn.hopfield;
 
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;

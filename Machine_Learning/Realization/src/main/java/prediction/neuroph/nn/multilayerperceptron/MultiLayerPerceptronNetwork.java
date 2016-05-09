@@ -1,4 +1,4 @@
-package ml.neuroph.nn.multilayerperceptron;
+package prediction.neuroph.nn.multilayerperceptron;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;

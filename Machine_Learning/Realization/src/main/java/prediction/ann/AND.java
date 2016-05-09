@@ -1,4 +1,4 @@
-package ml.nn;
+package prediction.nn;
 
 /**
  * Using Hebbian Learning, the AND logic function simulation

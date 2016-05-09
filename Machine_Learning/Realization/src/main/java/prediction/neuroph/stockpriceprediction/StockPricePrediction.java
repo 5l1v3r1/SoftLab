@@ -1,4 +1,4 @@
-package ml.neuroph.stockpriceprediction;
+package prediction.neuroph.stockpriceprediction;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;

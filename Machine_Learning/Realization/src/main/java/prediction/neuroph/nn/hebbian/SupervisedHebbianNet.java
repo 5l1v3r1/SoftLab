@@ -1,39 +1,37 @@
-package ml.neuroph.nn.adaline;
+package prediction.neuroph.nn.hebbian;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
-import org.neuroph.nnet.Adaline;
+import org.neuroph.nnet.SupervisedHebbianNetwork;
 
 import java.util.Arrays;
 
 /**
- * AdalineNetwork (ADAptive LInear NEuron) is simple two-layer neural network with only input and output layer,
- * having a single output neuron. Output neuron receives input from all input neurons.
+ * Supervised and unsupervised Hebbian networks are feedforward networks that use Hebbian learning rule.
  *
- * All neurons in network have linear transfer functions (y = kx+n),
- * and network use Least Mean Squares (LMS) algorithm for learning.
+ * From the point of view of artificial neural networks,Hebb's principle can be described as a method of
+ * determining how to alter the weights between neurons based on their activation.
  *
- * This network can be used to recognize patterns, data filtering, or to approximate linear function.
- * Note that this network can be applied only to linear problems.
+ * The weight between two neurons will increase if the two neurons activate simultaneously,
+ * and it is reduced if they activate separately.
  *
  * Configuration
  * -------------
- *  - Input Function: WeightedSum (Default)
- *  - Transfer Function: LINEAR(for input neuron) RAMP(for output neuron)
- *  - Learning Rule: LMS
- *  - Network Type: ADALINE
- *  - Neuron Type: BiasNeuron (input neuron:2, output neuron:1, total layers: 2)
- *  - Bias: yes
- *
+ *  - Input Function: WeightedSum
+ *  - Transfer Function: RAMP
+ *  - Learning Rule: SupervisedHebbianLearning
+ *  - Network Type: SUPERVISED_HEBBIAN_NET
+ *  - Neuron Type: Neuron (input neuron:2, output neuron:1, total layers: 2)
+ *  - Bias: no
  *
  * Below example is of AND logic function simulation
- * http://neuroph.sourceforge.net/tutorials/Adaline.html
+ * http://neuroph.sourceforge.net/tutorials/Hebbian.html
  *
  *
  * Created by hdhamee on 4/20/16.
  */
-public class AdalineNetwork {
+public class SupervisedHebbianNet {
     public static void main(String args[]) {
 
         // create training set (logical AND function)
@@ -44,7 +42,7 @@ public class AdalineNetwork {
         trainingSet.addRow(new DataSetRow(new double[]{1, 1}, new double[]{1}));
 
         // create perceptron neural network
-        NeuralNetwork myPerceptron = new Adaline(2);
+        NeuralNetwork myPerceptron = new SupervisedHebbianNetwork(2, 1);
 
         // learn the training set
         myPerceptron.learn(trainingSet);

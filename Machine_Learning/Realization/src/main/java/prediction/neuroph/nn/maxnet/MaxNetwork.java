@@ -1,4 +1,4 @@
-package ml.neuroph.nn.maxnet;
+package prediction.neuroph.nn.maxnet;
 
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
