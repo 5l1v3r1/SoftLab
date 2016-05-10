@@ -18,7 +18,7 @@ public class GeneticAlgorithBasedPrediction {
 
     public static void main(String[] args) {
         // initialize a new genetic algorithm
-        GeneticAlgorithm ga = new GeneticAlgorithm(new OnePointCrossover<Integer>(),1,new RandomKeyMutation(),0.10,
+        GeneticAlgorithm ga = new GeneticAlgorithm(new OnePointCrossover<Integer>(), 1, new RandomKeyMutation(), 0.10,
                 new TournamentSelection(TOURNAMENT_ARITY));
 
         // initial population
@@ -41,7 +41,7 @@ public class GeneticAlgorithBasedPrediction {
     private static ElitisticListPopulation getInitialPopulation() {
         List<Chromosome> popList = new LinkedList();
 
-        for (int i=0; i<POPULATION_SIZE; i++) {
+        for (int i = 0; i < POPULATION_SIZE; i++) {
             RandomKey randChrom = new FindOnes(RandomKey.randomPermutation(5));
             popList.add(randChrom);
         }
@@ -51,7 +51,7 @@ public class GeneticAlgorithBasedPrediction {
 
     /**
      * Chromosomes represented by a RandomKey chromosome.
-     *
+     * <p>
      * The goal is to set all bits (genes) to 1.
      */
     private static class FindOnes extends RandomKey {

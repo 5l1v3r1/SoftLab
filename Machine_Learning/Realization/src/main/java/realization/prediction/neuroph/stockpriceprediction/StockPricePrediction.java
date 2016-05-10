@@ -13,18 +13,18 @@ import java.io.*;
 import java.util.LinkedList;
 
 /**
- *  Neural networks have been applied to time-series realization.prediction for many years from forecasting stock prices and sunspot
- *  activity to predicting the growth of tree rings
- *
- *  The stock market courses, as well as the consumption of energy can be predicted to be able to make decisions.
- *
- *
+ * Neural networks have been applied to time-series realization.prediction for many years from forecasting stock prices and sunspot
+ * activity to predicting the growth of tree rings
+ * <p>
+ * The stock market courses, as well as the consumption of energy can be predicted to be able to make decisions.
+ * <p>
+ * <p>
  * - STOCK MARKET PREDICTION USING NEURAL NETWORKS
  * - CHICKEN PRICES PREDICTION USING NEURAL NETWORKS
- *
+ * <p>
  * http://neuroph.sourceforge.net/tutorials/StockMarketPredictionTutorial.html
- *
- *
+ * <p>
+ * <p>
  * Created by hdhamee on 4/20/16.
  */
 public class StockPricePrediction {
@@ -33,12 +33,17 @@ public class StockPricePrediction {
     private double min = Double.MAX_VALUE;
     private String rawDataFilePath;
 
-    private String learningDataFilePath = "input/learningData.csv";
-    private String neuralNetworkModelFilePath = "stockPredictor.nnet";
+    private String learningDataFilePath = "input/stock/learningData.csv";
+    private String neuralNetworkModelFilePath = "output/stock/stockPredictor.nnet";
+
+    public StockPricePrediction(int slidingWindowSize, String rawDataFilePath) {
+        this.rawDataFilePath = rawDataFilePath;
+        this.slidingWindowSize = slidingWindowSize;
+    }
 
     public static void main(String[] args) throws IOException {
 
-        StockPricePrediction predictor = new StockPricePrediction(5, "input/rawTrainingData.csv");
+        StockPricePrediction predictor = new StockPricePrediction(5, "input/stock/rawTrainingData.csv");
         predictor.prepareData();
 
         System.out.println("Training starting");
@@ -46,11 +51,6 @@ public class StockPricePrediction {
 
         System.out.println("Testing network");
         predictor.testNetwork();
-    }
-
-    public StockPricePrediction(int slidingWindowSize, String rawDataFilePath) {
-        this.rawDataFilePath = rawDataFilePath;
-        this.slidingWindowSize = slidingWindowSize;
     }
 
     void prepareData() throws IOException {
@@ -146,7 +146,7 @@ public class StockPricePrediction {
                 for (int i = 0; i < slidingWindowSize; i++) {
                     trainValues[i] = Double.valueOf(tokens[i]);
                 }
-                double expectedValue[] = new double[] { Double.valueOf(tokens[slidingWindowSize]) };
+                double expectedValue[] = new double[]{Double.valueOf(tokens[slidingWindowSize])};
                 trainingSet.addRow(new DataSetRow(trainValues, expectedValue));
             }
         } finally {

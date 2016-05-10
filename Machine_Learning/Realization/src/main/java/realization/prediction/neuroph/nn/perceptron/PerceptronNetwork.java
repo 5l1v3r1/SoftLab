@@ -9,33 +9,33 @@ import java.util.Arrays;
 
 /**
  * PerceptronNetwork is a simple two layer neural network with several neurons in input layer, and one or more neurons in output layer.
- *
+ * <p>
  * All neurons use step transfer function and network can use LMS based learning algorithm such as PerceptronNetwork Learning or Delta Rule.
- *
+ * <p>
  * This network can be used as a linear classifier, and it can only be applied to linear separable problems.
- *
+ * <p>
  * The perceptron was suggest by  Rosenblatt in 1958.
  * It uses an iterative learning  procedure which can be proven  to converge to the correct
  * weights for linearly separable  data.
- *
+ * <p>
  * Weights are changed only when an error  occurs.
- *       wi(new) = wi(old) + xiαt
- *       t is either +1 or -1;  α is the learning rate [0.1].
- *
- *
+ * wi(new) = wi(old) + xiαt
+ * t is either +1 or -1;  α is the learning rate [0.1].
+ * <p>
+ * <p>
  * Configuration
  * -------------
- *  - Input Function: WeightedSum
- *  - Transfer Function: STEP
- *  - Learning Rule: BinaryDeltaRule
- *  - Network Type: PERCEPTRON
- *  - Neuron Type: ThresholdNeuron/Neuron (output/input neuron) (input neuron:2, output neuron:1, total layers: 2)
- *  - Bias: no
- *
+ * - Input Function: WeightedSum
+ * - Transfer Function: STEP
+ * - Learning Rule: BinaryDeltaRule
+ * - Network Type: PERCEPTRON
+ * - Neuron Type: ThresholdNeuron/Neuron (output/input neuron) (input neuron:2, output neuron:1, total layers: 2)
+ * - Bias: no
+ * <p>
  * Below example is of AND logic function simulation
  * http://neuroph.sourceforge.net/tutorials/Perceptron.html
- *
- *
+ * <p>
+ * <p>
  * Created by hdhamee on 4/20/16.
  */
 public class PerceptronNetwork {
@@ -73,18 +73,19 @@ public class PerceptronNetwork {
 
     /**
      * Prints network output for the each element from the specified training set.
+     *
      * @param neuralNet neural network
-     * @param testSet data set used for testing
+     * @param testSet   data set used for testing
      */
     public static void testNeuralNetwork(NeuralNetwork neuralNet, DataSet testSet) {
 
-        for(DataSetRow trainingElement : testSet.getRows()) {
+        for (DataSetRow trainingElement : testSet.getRows()) {
             neuralNet.setInput(trainingElement.getInput());
             neuralNet.calculate();
             double[] networkOutput = neuralNet.getOutput();
 
-            System.out.print("Input: " + Arrays.toString(trainingElement.getInput()) );
-            System.out.println(" Output: " + Arrays.toString(networkOutput) );
+            System.out.print("Input: " + Arrays.toString(trainingElement.getInput()));
+            System.out.println(" Output: " + Arrays.toString(networkOutput));
         }
     }
 }

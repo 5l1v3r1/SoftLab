@@ -2,19 +2,19 @@ package realization.prediction.nn;
 
 /**
  * Using Hebbian Learning, the AND logic function simulation
- *
+ * <p>
  * Created by hdhamee on 4/18/16.
  */
 public class AND {
 
-    public static void main(String a[]){
+    public static void main(String a[]) {
         //prepare training data
         int trainingData[][] = new int[][]{
                 //bias,input1,input2,output
-                {1,1,1,1},
-                {1,1,-1,-1},
-                {1,-1,1,-1},
-                {1,-1,-1,-1}};
+                {1, 1, 1, 1},
+                {1, 1, -1, -1},
+                {1, -1, 1, -1},
+                {1, -1, -1, -1}};
 
         // create neural net
         NeuralNetwork net = new NeuralNetwork(trainingData);
@@ -60,7 +60,7 @@ public class AND {
         }
 
         public void test(int[] inputs) {
-            System.out.println(getNeuralNetOutput(neuron, inputs) > 0 ? 1:-1);
+            System.out.println(getNeuralNetOutput(neuron, inputs) > 0 ? 1 : -1);
         }
     }
 
@@ -69,11 +69,11 @@ public class AND {
     public static class Neuron {
         double[] weights;
 
-        public Neuron(){
+        public Neuron() {
             weights = new double[3];
         }
 
-        public double getWeightedSum(int[] inputs){
+        public double getWeightedSum(int[] inputs) {
             int output = 0;
             for (int j = 0; j < inputs.length - 1; j++) {
                 output += (inputs[j] * weights[j]);
@@ -81,13 +81,13 @@ public class AND {
             return output;
         }
 
-        public void updateWeights(int[] inputs){
-            for (int j = 0; j < inputs.length-1; j++) {
-                weights[j] += (inputs[inputs.length-1] * inputs[j]);
+        public void updateWeights(int[] inputs) {
+            for (int j = 0; j < inputs.length - 1; j++) {
+                weights[j] += (inputs[inputs.length - 1] * inputs[j]);
             }
         }
 
-        public double[] getWeights(){
+        public double[] getWeights() {
             return weights;
         }
     }

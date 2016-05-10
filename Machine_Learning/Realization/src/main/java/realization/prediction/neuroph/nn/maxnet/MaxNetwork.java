@@ -10,14 +10,14 @@ import java.util.Arrays;
 /**
  * Maxnet is an implementation of a maximum-finding function. With each iteration, the neurons’ activations
  * will decrease until only one neuron remains active.
- *
+ * <p>
  * The “winner” is neuron that had the greatest output.
- *
+ * <p>
  * For this type of neural network there is no training process.
- *
+ * <p>
  * http://neuroph.sourceforge.net/tutorials/MaxNet.html
- *
- *
+ * <p>
+ * <p>
  * Created by hdhamee on 4/20/16.
  */
 public class MaxNetwork {
@@ -44,18 +44,19 @@ public class MaxNetwork {
 
     /**
      * Prints network output for the each element from the specified training set.
+     *
      * @param neuralNet neural network
-     * @param testSet data set used for testing
+     * @param testSet   data set used for testing
      */
     public static void testNeuralNetwork(NeuralNetwork neuralNet, DataSet testSet) {
 
-        for(DataSetRow trainingElement : testSet.getRows()) {
+        for (DataSetRow trainingElement : testSet.getRows()) {
             neuralNet.setInput(trainingElement.getInput());
             neuralNet.calculate();
             double[] networkOutput = neuralNet.getOutput();
 
-            System.out.print("Input: " + Arrays.toString(trainingElement.getInput()) );
-            System.out.println(" Output: " + Arrays.toString(networkOutput) );
+            System.out.print("Input: " + Arrays.toString(trainingElement.getInput()));
+            System.out.println(" Output: " + Arrays.toString(networkOutput));
         }
     }
 }

@@ -10,27 +10,27 @@ import java.util.Arrays;
 /**
  * AdalineNetwork (ADAptive LInear NEuron) is simple two-layer neural network with only input and output layer,
  * having a single output neuron. Output neuron receives input from all input neurons.
- *
+ * <p>
  * All neurons in network have linear transfer functions (y = kx+n),
  * and network use Least Mean Squares (LMS) algorithm for learning.
- *
+ * <p>
  * This network can be used to recognize patterns, data filtering, or to approximate linear function.
  * Note that this network can be applied only to linear problems.
- *
+ * <p>
  * Configuration
  * -------------
- *  - Input Function: WeightedSum (Default)
- *  - Transfer Function: LINEAR(for input neuron) RAMP(for output neuron)
- *  - Learning Rule: LMS
- *  - Network Type: ADALINE
- *  - Neuron Type: BiasNeuron (input neuron:2, output neuron:1, total layers: 2)
- *  - Bias: yes
- *
- *
+ * - Input Function: WeightedSum (Default)
+ * - Transfer Function: LINEAR(for input neuron) RAMP(for output neuron)
+ * - Learning Rule: LMS
+ * - Network Type: ADALINE
+ * - Neuron Type: BiasNeuron (input neuron:2, output neuron:1, total layers: 2)
+ * - Bias: yes
+ * <p>
+ * <p>
  * Below example is of AND logic function simulation
  * http://neuroph.sourceforge.net/tutorials/Adaline.html
- *
- *
+ * <p>
+ * <p>
  * Created by hdhamee on 4/20/16.
  */
 public class AdalineNetwork {
@@ -67,18 +67,19 @@ public class AdalineNetwork {
 
     /**
      * Prints network output for the each element from the specified training set.
+     *
      * @param neuralNet neural network
-     * @param testSet data set used for testing
+     * @param testSet   data set used for testing
      */
     public static void testNeuralNetwork(NeuralNetwork neuralNet, DataSet testSet) {
 
-        for(DataSetRow trainingElement : testSet.getRows()) {
+        for (DataSetRow trainingElement : testSet.getRows()) {
             neuralNet.setInput(trainingElement.getInput());
             neuralNet.calculate();
             double[] networkOutput = neuralNet.getOutput();
 
-            System.out.print("Input: " + Arrays.toString(trainingElement.getInput()) );
-            System.out.println(" Output: " + Arrays.toString(networkOutput) );
+            System.out.print("Input: " + Arrays.toString(trainingElement.getInput()));
+            System.out.println(" Output: " + Arrays.toString(networkOutput));
         }
     }
 }

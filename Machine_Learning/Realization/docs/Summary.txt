@@ -1,4 +1,4 @@
-Comparative analysis of ANN based,Interpolation based and Genetic algorithm based realization.prediction
+Comparative analysis of ANN based,Interpolation based and Genetic algorithm based prediction
 ********************************************************************************************
 Training neural network with genetic algorithms for forecasting the stock price index
 ********************************************************************************************
@@ -100,7 +100,7 @@ Learning Types(org.neuroph.core.learning)
 -----------------------------------------
 IterativeLearning
 SupervisedLearning
-LMS
+  LMS
     SigmoidDeltaRule
         BackPropagation
         MomentumBackPropagation
@@ -120,7 +120,7 @@ Some real-world applications of Neuroph
 - Java & Neural Network IDE, Neuroph Studio, based on NetBeans Platform
 - Image recognition support
 - OCR support
-- Stock market realization.prediction sample
+- Stock market prediction sample
 - Learning vizualisation samples
 - Data normalization
 - Simple microbenchmarking framework
@@ -207,6 +207,7 @@ Data Mining Application
 
 Data Mining System Classification
 ----------------------------------
+A data mining system can be classified according to the following criteria:
 - Database Technology
 - Statistics
 - Machine Learning

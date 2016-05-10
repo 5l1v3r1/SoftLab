@@ -17,34 +17,49 @@ import java.util.Arrays;
 
 /**
  * Multi Layer perceptron (MLP) is a feedforward neural network with one or more layers between input and output layer.
- *
+ * <p>
  * Feedforward means that data flows in one direction from input to output layer (forward).
- *
+ * <p>
  * This type of network is trained with the backpropagation learning algorithm. MLPs are widely used for pattern classification,
  * recognition, realization.prediction and approximation.
- *
+ * <p>
  * Multi Layer PerceptronNetwork can solve problems which are not linearly separable.
- *
- *  * Configuration
+ * <p>
+ * * Configuration
  * -------------
- *  - Input Function: WeightedSum
- *  - Transfer Function: TANH
- *  - Learning Rule: MomentumBackpropagation
- *  - Network Type: MULTI_LAYER_PERCEPTRON
- *  - Neuron Type: BiasNeuron (input neuron:2, hidden:3, output neuron:1, total layers: 3)
- *  - Bias: yes
- *
- *
+ * - Input Function: WeightedSum
+ * - Transfer Function: TANH
+ * - Learning Rule: MomentumBackpropagation
+ * - Network Type: MULTI_LAYER_PERCEPTRON
+ * - Neuron Type: BiasNeuron (input neuron:2, hidden:3, output neuron:1, total layers: 3)
+ * - Bias: yes
+ * <p>
+ * <p>
  * This sample shows how to create, train, save and load simple XOR logic function for the MultiLayerPerceptronNetwork.
  * http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
- *
- *
+ * <p>
+ * <p>
  * This sample shows basics of Neuroph API.
  */
 public class MultiLayerPerceptronNetwork implements LearningEventListener {
 
     public static void main(String[] args) {
         new MultiLayerPerceptronNetwork().run();
+    }
+
+    /**
+     * Prints network output for the each element from the specified training set.
+     */
+    public static void testNeuralNetwork(NeuralNetwork neuralNet, DataSet testSet) {
+
+        for (DataSetRow testSetRow : testSet.getRows()) {
+            neuralNet.setInput(testSetRow.getInput());
+            neuralNet.calculate();
+            double[] networkOutput = neuralNet.getOutput();
+
+            System.out.print("Input: " + Arrays.toString(testSetRow.getInput()));
+            System.out.println(" Output: " + Arrays.toString(networkOutput));
+        }
     }
 
     public void run() {
@@ -59,8 +74,8 @@ public class MultiLayerPerceptronNetwork implements LearningEventListener {
         MultiLayerPerceptron myMlPerceptron = new MultiLayerPerceptron(TransferFunctionType.TANH, 2, 3, 1);
 
         // enable batch if using MomentumBackpropagation
-        if( myMlPerceptron.getLearningRule() instanceof MomentumBackpropagation )
-            ((MomentumBackpropagation)myMlPerceptron.getLearningRule()).setBatchMode(true);
+        if (myMlPerceptron.getLearningRule() instanceof MomentumBackpropagation)
+            ((MomentumBackpropagation) myMlPerceptron.getLearningRule()).setBatchMode(true);
 
         LearningRule learningRule = myMlPerceptron.getLearningRule();
         learningRule.addListener(this);
@@ -84,25 +99,10 @@ public class MultiLayerPerceptronNetwork implements LearningEventListener {
         testNeuralNetwork(loadedMlPerceptron, trainingSet);
     }
 
-    /**
-     * Prints network output for the each element from the specified training set.
-     */
-    public static void testNeuralNetwork(NeuralNetwork neuralNet, DataSet testSet) {
-
-        for(DataSetRow testSetRow : testSet.getRows()) {
-            neuralNet.setInput(testSetRow.getInput());
-            neuralNet.calculate();
-            double[] networkOutput = neuralNet.getOutput();
-
-            System.out.print("Input: " + Arrays.toString( testSetRow.getInput() ) );
-            System.out.println(" Output: " + Arrays.toString( networkOutput) );
-        }
-    }
-
     public void handleLearningEvent(LearningEvent event) {
-        BackPropagation bp = (BackPropagation)event.getSource();
+        BackPropagation bp = (BackPropagation) event.getSource();
         if (event.getEventType() != LearningEventType.LEARNING_STOPPED)
-            System.out.println(bp.getCurrentIteration() + ". iteration : "+ bp.getTotalNetworkError());
+            System.out.println(bp.getCurrentIteration() + ". iteration : " + bp.getTotalNetworkError());
     }
 
 }

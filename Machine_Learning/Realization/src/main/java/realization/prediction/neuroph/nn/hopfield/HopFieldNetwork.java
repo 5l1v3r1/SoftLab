@@ -9,26 +9,26 @@ import java.util.Arrays;
 /**
  * The Hopfield network is a recurrent neural network in which all connections are symmetric.
  * Hopfield nets serve as content-addressable (associative) memory systems with binary threshold units.
- *
+ * <p>
  * They are guaranteed to converge to a local minimum, but convergence to one of the stored.
- *
+ * <p>
  * The simplest use of this network is recognition of characters “T” and “H”, which we will use in our training set for
  * this network. It uses unsupervised learning method.
- *
- *
+ * <p>
+ * <p>
  * Configuration
  * -------------
- *  - Input Function: WeightedSum
- *  - Transfer Function: STEP
- *  - Learning Rule: BinaryHebbianLearning
- *  - Network Type: HOPFIELD
- *  - Neuron Type: InputOutputNeuron (input neuron:2, output neuron:1, total layers: 2)
- *  - Bias: yes
- *
+ * - Input Function: WeightedSum
+ * - Transfer Function: STEP
+ * - Learning Rule: BinaryHebbianLearning
+ * - Network Type: HOPFIELD
+ * - Neuron Type: InputOutputNeuron (input neuron:2, output neuron:1, total layers: 2)
+ * - Bias: yes
+ * <p>
  * Below example is of H and T character recognition
  * http://neuroph.sourceforge.net/tutorials/Hopfield.html
- *
- *
+ * <p>
+ * <p>
  * Created by hdhamee on 4/20/16.
  */
 public class HopFieldNetwork {
@@ -50,15 +50,15 @@ public class HopFieldNetwork {
         // add one more 'incomplete' H pattern for testing - it will be recognized as H
         trainingSet.addRow(new DataSetRow(new double[]{1, 0, 0, 1, 0, 1, 1, 0, 1})); // incomplete H letter
 
-        for(DataSetRow dataRow : trainingSet.getRows()) {
+        for (DataSetRow dataRow : trainingSet.getRows()) {
 
             myHopfield.setInput(dataRow.getInput());
             myHopfield.calculate();
             myHopfield.calculate();
-            double[ ] networkOutput = myHopfield.getOutput();
+            double[] networkOutput = myHopfield.getOutput();
 
-            System.out.print("Input: " + Arrays.toString(dataRow.getInput()) );
-            System.out.println(" Output: " + Arrays.toString(networkOutput) );
+            System.out.print("Input: " + Arrays.toString(dataRow.getInput()));
+            System.out.println(" Output: " + Arrays.toString(networkOutput));
 
         }
 
