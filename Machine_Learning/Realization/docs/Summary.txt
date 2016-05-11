@@ -143,6 +143,20 @@ NEURON_REMOVED
 CONNECTION_ADDED
 CONNECTION_REMOVED
 
+Why should I normalize/standardize/rescale the input data for ANN
+-----------------------------------------------------------------
+Terminologies:
+1. Vector: A vector is an ordered set of elements in which each element is associated with, and is accessible by, a non-negative integer called its index.
+2. Rescaling: Rescaling a vector means to add or subtract a  constant and then multiply or divide by a constant.
+3. Normalization: Normalizing a vector most often means dividing by a norm/range(length(max-min)) of the vector.
+   In NN literature,normalization also often refers to rescaling by the minimum and range of the vector, to make all the elements lie between 0 and 1.
+4. Standardizing: Standardizing a vector most often means subtracting mean and dividing by a standard deviation.
+It depends upon the need.
+
+http://www.faqs.org/faqs/ai-faq/neural-nets/part2/
+
+
+
 
 
 Data Normalization Techniques
