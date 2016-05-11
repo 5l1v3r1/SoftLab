@@ -4,6 +4,10 @@ Training neural network with genetic algorithms for forecasting the stock price 
 ********************************************************************************************
 Removing bad data using Interpolation for stock/heart disease prediction
 ********************************************************************************************
+Processing performance on Apache Pig, Apache Hive and MySQL cluster
+********************************************************************************************
+========Processing performance on Cassandra Cluster,MySQL cluster,Apache Hive,MangoDB=======
+********************************************************************************************
 
 Java Machine Learning Frameworks
     Encog (Multicore and GPU powered)
@@ -13,6 +17,10 @@ Java Machine Learning Frameworks
         http://neuroph.sourceforge.net/documentation.html
     The Apache Commons Mathematics Library
     https://commons.apache.org/proper/commons-math/userguide/index.html
+Hadoop Thesis
+    http://hadoopproject.com/hadoop-thesis/
+    IEEE thesis titles list
+    http://hadoopmag.com/article-instant-hadoop-hive-hbase-cassandra-mongo-etc-in-early-development-process/
 
 Neural Netwrok(NN) Steps
 ------------------------
