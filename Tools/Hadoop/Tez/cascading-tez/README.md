@@ -6,8 +6,9 @@
 - set tez.lib.uris to "${fs.defaultFS}/apps/tez-0.8.3/tez-0.8.3.tar.gz" in tez-site.xml
 - Configure the client node to include the tez-libraries in the hadoop classpath:export HADOOP_CLASSPATH=${TEZ_CONF_DIR}:${TEZ_JARS}/*:${TEZ_JARS}/lib/*
 
-https://tez.apache.org/install.html
-http://blog.sequenceiq.com/blog/2014/10/20/cascading-on-tez/
+References:
+- https://tez.apache.org/install.html
+- http://blog.sequenceiq.com/blog/2014/10/20/cascading-on-tez/
 
 For cascading: changes:
 ```
