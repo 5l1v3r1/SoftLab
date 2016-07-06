@@ -9,6 +9,7 @@
 References:
 - https://tez.apache.org/install.html
 - http://blog.sequenceiq.com/blog/2014/10/20/cascading-on-tez/
+- https://github.com/cascading/cascading/tree/3.0/cascading-hadoop2-tez
 
 For cascading: changes:
 ```
