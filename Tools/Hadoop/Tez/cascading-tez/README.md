@@ -8,6 +8,7 @@ Setup Steps
 - hadoop fs -mkdir -p /apps/tez-0.8.3
 - hadoop fs -put ./tez-dist/target/tez-0.8.3.tar.gz /apps/tez-0.8.3/tez-0.8.3.tar.gz
 - set tez.lib.uris to "${fs.defaultFS}/apps/tez-0.8.3/tez-0.8.3.tar.gz" in tez-site.xml in $HADOOP_CONF_DIR
+- set "mapreduce.framework.name"="yarn-tez" in mapred-site.xml in $HADOOP_CONF_DIR
 - Configure the client node to include the tez-libraries in the hadoop classpath
    - extract ./tez-dist/target/tez-0.8.3-minimal.tar.gz in TEZ_JARS dir.
    - export HADOOP_CLASSPATH= $HADOOP_CLASSPATH:${TEZ_JARS}/*:${TEZ_JARS}/lib/* in $HADOOP_CONF_DIR/hadoop_env.sh only in client node.
