@@ -30,6 +30,10 @@ public class Main {
         pipe1 = new GroupBy(pipe1,new Fields("a"));
 
         Properties properties = FlowRuntimeProps.flowRuntimeProps()
+                // gather partitions - number of slices (partitions) to gather keys within each cascading.flow.FlowNode.
+                // In MapReduce this is the number of reducers. In Tez DAG this is the scatter gather parallelization
+
+                //Typically set to 99% of the cluster's reduce capacity
                 .setGatherPartitions(4)
                 .buildProperties();
 

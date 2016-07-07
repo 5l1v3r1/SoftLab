@@ -18,7 +18,6 @@ Setup Steps
 References
 -------------
 - https://tez.apache.org/install.html
-- http://blog.sequenceiq.com/blog/2014/10/20/cascading-on-tez/
 - https://github.com/cascading/cascading/tree/3.0/cascading-hadoop2-tez
 
 
@@ -33,5 +32,52 @@ Properties properties = FlowRuntimeProps.flowRuntimeProps()
         AppProps.setApplicationName(properties,"Tez-Test");
 
 Flow flow = new Hadoop2TezFlowConnector(properties).connect(flowDef);
+
+```
+
+Optimization: Tez configs
+-------------------------
+```
+  <property>
+      <name>tez.runtime.compress</name>
+      <value>true</value>
+      <description>Whether intermediate data should be compressed or not</description>
+  </property>
+  <property>
+      <name>tez.runtime.compress.codec</name>
+      <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+      <description>The coded to be used if compressing intermediate data. Only
+        applicable if tez.runtime.compress is enabled
+      </description>
+  </property>
+
+  <property>
+    <name>tez.am.resource.memory.mb</name>
+    <value>4096</value> <!-- Example: "1536" -->
+    <description>The amount of memory to be used by the AppMaster.
+      Used only if the value is not specified explicitly by the DAG definition.
+    </description>
+  </property>
+  <property>
+    <name>tez.task.resource.memory.mb</name>
+    <value>4096</value>
+    <description>The amount of memory to be used by launched tasks.
+    Used only if the value is not specified explicitly by the DAG definition.
+    </description>
+  </property>
+
+  <property>
+    <name>tez.runtime.shuffle.memory-to-memory.enable</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>tez.runtime.optimize.local.fetch</name>
+    <value>true</value>
+  </property>
+
+  <property>
+     <name>mapred.output.committer.class</name>
+     <value>org.apache.hadoop.mapred.FileOutputCommitter</value>
+  </property>
 
 ```
