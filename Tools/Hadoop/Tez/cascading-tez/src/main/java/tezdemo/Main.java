@@ -29,7 +29,6 @@ public class Main {
         pipe1 = new Each(pipe1,new Identity());
         pipe1 = new GroupBy(pipe1,new Fields("a"));
 
-
         Properties properties = FlowRuntimeProps.flowRuntimeProps()
                 .setGatherPartitions(4)
                 .buildProperties();

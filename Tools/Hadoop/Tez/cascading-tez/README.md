@@ -4,10 +4,11 @@ Setup Steps
 - git clone https://github.com/apache/tez.git
 - cd tez
 - git checkout tags/release-0.8.3-rc0
+- Update root pom.xml to change hadoop version property:  <hadoop.version>2.7.1</hadoop.version>
 - mvn clean package -DskipTests=true -Dmaven.javadoc.skip=true
 - hadoop fs -mkdir -p /apps/tez-0.8.3
-- hadoop fs -put ./tez-dist/target/tez-0.8.3.tar.gz /apps/tez-0.8.3/tez-0.8.3.tar.gz
-- set tez.lib.uris to "${fs.defaultFS}/apps/tez-0.8.3/tez-0.8.3.tar.gz" in tez-site.xml in $HADOOP_CONF_DIR
+- hadoop fs -put ./tez-dist/target/tez-0.8.3-minimal.tar.gz /apps/tez-0.8.3/tez-0.8.3-minimal.tar.gz
+- set `tez.lib.uris to "${fs.defaultFS}/apps/tez-0.8.3/tez-0.8.3-minimal.tar.gz"` and `tez.use.cluster.hadoop-libs to true` in tez-site.xml in $HADOOP_CONF_DIR
 - set "mapreduce.framework.name"="yarn-tez" in mapred-site.xml in $HADOOP_CONF_DIR
 - Configure the client node to include the tez-libraries in the hadoop classpath
    - extract ./tez-dist/target/tez-0.8.3-minimal.tar.gz in TEZ_JARS dir.
