@@ -23,8 +23,8 @@ public class SparkWordCountYARNMode {
                 setAppName("App_Name")
                 .setMaster("yarn-client"); // 4 options: local,yarn-client/yarn-cluster,spark://host:port,mesos://host:port
 
-        // you can set all the spark configurations here
-        JavaSparkContext sc = new JavaSparkContext(conf);
+        // you can set all the spark configurations here or take from command-line instead of setting here
+        JavaSparkContext sc = new JavaSparkContext(conf);// spark context is the driver program which can connect to variety of cluster managers
 
         JavaRDD<String> textFile = sc.textFile("hdfs://localhost:9000/user/hdhamee/input/input.txt");
         JavaRDD<String> words = textFile.flatMap(new FlatMapFunction<String, String>() {
