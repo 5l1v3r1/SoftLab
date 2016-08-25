@@ -1,6 +1,6 @@
 package mj.symtab;
 
-import mj.error.NameAlreadyExistsExcpetion;
+import mj.exception.NameAlreadyExistsExcpetion;
 
 /**
  * This class manages scopes and inserts and retrieves objects.

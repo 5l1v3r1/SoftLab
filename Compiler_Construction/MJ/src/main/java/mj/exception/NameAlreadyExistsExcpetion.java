@@ -1,4 +1,4 @@
-package mj.error;
+package mj.exception;
 
 /** *
  * @author Vivien Barousse

@@ -11,8 +11,12 @@ import java.io.IOException;
 /**
  * Created by hdhamee on 8/25/16.
  */
-public class Main {
+public class Compiler {
     public static void main(String[] args) {
+        if (args.length < 2) {
+           System.out.println("-- synopsis: java mj.Compiler <inputfileName>");
+        }
+        // for idea case take input from command line
         String inFile = "data/sample.mj";
         String outFile = "data/sample.obj";
         try {

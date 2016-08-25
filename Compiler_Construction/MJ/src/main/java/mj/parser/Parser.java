@@ -2,7 +2,7 @@ package mj.parser;
 
 import mj.codegen.Code;
 import mj.codegen.Operand;
-import mj.error.NameAlreadyExistsExcpetion;
+import mj.exception.NameAlreadyExistsExcpetion;
 import mj.scanner.Scanner;
 import mj.scanner.Token;
 import mj.symtab.Struct;
