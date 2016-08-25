@@ -1,34 +1,28 @@
 package mj;
 
-import mj.symtab.SymTab;
+import junit.framework.TestCase;
+import mj.parser.Parser;
+import mj.scanner.Scanner;
 
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.FileNotFoundException;
 
 /**
  * Created by hdhamee on 1/11/16.
  */
-public class TestParser {
-    // Main method of the parser tester
-    public static void main(String args[]) {
-        Token t;
-        String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/sample.mj";
-        if (source != null) {
-            try {
-                ErrorHandler.Init(null);
-                //initialize scanner
-                Scanner.init(new InputStreamReader(new FileInputStream(source)));
-                //initialize symbol table
-                SymTab.init();
-                //start parsing
-                Parser.parse();
-                System.out.println(Parser.errors + " errors detected");
-            } catch (IOException e) {
-                System.out.println("-- cannot open input file " + source);
-            }
-        } else System.out.println("-- synopsis: java MJ.TestParser <inputfileName>");
+public class TestParser extends TestCase {
+
+    public void testParser(){
+        String inFile = "data/sample.mj";
+        try {
+            Scanner scanner = new Scanner(new FileInputStream(inFile));
+            Parser parser = new Parser(scanner);
+            parser.parse();
+
+            System.out.println(parser.errors + " errors found.");
+
+        } catch (FileNotFoundException ex) {
+            System.err.println(inFile + " not found, exiting...");
+        }
     }
-
-
 }

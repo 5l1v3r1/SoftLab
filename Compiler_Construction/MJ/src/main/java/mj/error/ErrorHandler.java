@@ -1,4 +1,6 @@
-package mj;
+package mj.error;
+
+import java.lang.*;
 
 /*
  * The ErrorHander Class uses the singleton pattern to print error
@@ -46,7 +48,7 @@ public class ErrorHandler {
 
         System.out.print(String.format(CURRENT_TEMPLATE, lastError.DatetimeOfError, lastError.T.kind,
                 tokenformattedString,
-                lastError.T.val,
+                lastError.T.value,
                 lastError.Msg,
                 systemMessage));
 

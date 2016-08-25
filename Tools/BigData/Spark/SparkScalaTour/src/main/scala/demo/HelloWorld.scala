@@ -1,12 +1,12 @@
 package demo
 
-import org.apache.spark.{SparkContext, SparkConf}
+import org.apache.spark.{SparkConf, SparkContext}
 
 object HelloWorld {
 
   def main(args: Array[String]) :Unit = {
 
-   // Initializing Spark: The Driver program
+    // Initializing Spark: The Driver program
     val conf = new SparkConf().setAppName("SparkOperations").setMaster("local[2]")
     val sc = new SparkContext(conf)
 
@@ -16,11 +16,19 @@ object HelloWorld {
     //[1] In-program Collection
     val data = Array(1, 2, 3, 4, 5)
     val distData = sc.parallelize(data,2)
-    val sum = distData.reduce((a:Int,b:Int) => a + b)
-    println("OUTPUT:"); print(sum)
+    val sum = distData
+      .reduce((a,b) => a + b)
+    val s = sc.parallelize(Seq(sum),1)
+
+    s.saveAsTextFile("output/output1.txt")
+
     //[2] External Collection
     val distFile = sc.textFile("data/input.txt",2)// no need to specify minPartition in case of HDFS
-    val length = distFile.map(s => s.length).reduce((a, b) => a + b)
+    val counts = distFile
+        .flatMap(line => line.split(" "))
+        .map(word => (word, 1))
+        .reduceByKey(_ + _)
+    counts.saveAsTextFile("output/output2.txt")
 
     //RDD Operations:Transformations and Actions
 

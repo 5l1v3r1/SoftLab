@@ -1,130 +1,155 @@
 package mj;
 
-import org.junit.Test;
+import junit.framework.TestCase;
+import mj.scanner.Scanner;
+import mj.scanner.Token;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.ByteArrayInputStream;
 
 /**
- * Created by hdhamee on 1/6/16.
+ * Created by hdhamee on 1/6/16. *
+ * cloned from https://github.com/VivienBarousse/MicroJava
  */
-public class TestScanner {
-    private static final int  // token codes
-            none      = 0,
+public class TestScanner extends TestCase {
+    public void testNextKeywords() {
 
-            ident     = 1,
-            number    = 2,
-            charCon   = 3,
+        String program = "class else final if new print program read return void while";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(program.getBytes()));
 
-            plus      = 4,
-            minus     = 5,
-            times     = 6,
-            slash     = 7,
-            rem       = 8,
-            eql       = 9,
-            neq       = 10,
-            lss       = 11,
-            leq       = 12,
-            gtr       = 13,
-            geq       = 14,
-            assign    = 15,
-            semicolon = 16,
-            comma     = 17,
-            period    = 18,
-            lpar      = 19,
-            rpar      = 20,
-            lbrack    = 21,
-            rbrack    = 22,
-            lbrace    = 23,
-            rbrace    = 24,
+        assertEquals(scanner.next().kind, Token.CLASS);
+        assertEquals(scanner.next().kind, Token.ELSE);
+        assertEquals(scanner.next().kind, Token.FINAL);
+        assertEquals(scanner.next().kind, Token.IF);
+        assertEquals(scanner.next().kind, Token.NEW);
+        assertEquals(scanner.next().kind, Token.PRINT);
+        assertEquals(scanner.next().kind, Token.PROGRAM);
+        assertEquals(scanner.next().kind, Token.READ);
+        assertEquals(scanner.next().kind, Token.RETURN);
+        assertEquals(scanner.next().kind, Token.VOID);
+        assertEquals(scanner.next().kind, Token.WHILE);
+        assertEquals(scanner.next().kind, Token.EOF);
+    }
 
-            class_    = 25,
-            else_     = 26,
-            final_    = 27,
-            if_       = 28,
-            new_      = 29,
-            print_    = 30,
-            program_  = 31,
-            read_     = 32,
-            return_   = 33,
-            void_     = 34,
-            while_    = 35,
+    public void testIdentifiers() {
+        String program = "foo bar baz";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(program.getBytes()));
 
-            eof       = 36;
+        Token token;
+        token = scanner.next();
+        assertEquals(token.kind, Token.IDENT);
+        assertEquals(token.string, "foo");
 
-    private static String[] tokenName = {
-            // error token-codes
-            "none",
+        token = scanner.next();
+        assertEquals(token.kind, Token.IDENT);
+        assertEquals(token.string, "bar");
 
-            // token classes token-codes
-            "ident ",
-            "number ",
-            "charCon ",
+        token = scanner.next();
+        assertEquals(token.kind, Token.IDENT);
+        assertEquals(token.string, "baz");
 
-            // operators and special characters token-codes
-            "plus",
-            "minus",
-            "times",
-            "slash",
-            "rem",
-            "eql",
-            "neq",
-            "lss",
-            "leq",
-            "gtr",
-            "geq",
-            "assign",
-            "semicolon",
-            "comma",
-            "period",
-            "lpar",
-            "rpar",
-            "lbrack",
-            "rbrack",
-            "lbrace",
-            "rbrace",
+        assertEquals(scanner.next().kind, Token.EOF);
+    }
 
-            // keywords token-codes
-            "class_",
-            "else_",
-            "final_",
-            "if_",
-            "new_",
-            "print_",
-            "program_",
-            "read_",
-            "return_",
-            "void_",
-            "while_",
+    public void testNumbers() {
+        String program = "42 12 1337";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(program.getBytes()));
 
-            // end of line token-codes
-            "eof"
-    };
+        Token token;
 
-    // Main method of the scanner tester
-    public static void main(String[] args) {
-        Token t;
-        String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/sample.mj";
-        //String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/sample2.mj";
-        //String source = "/home/hdhamee/contributions/CoderLab/Compiler_Construction/MJ/src/test/resource/BuggyScannerInput.mj";
-        if (source != null) {
-            try {
-                ErrorHandler.Init(null);
-                Scanner.init(new InputStreamReader(new FileInputStream(source)));
-                do {
-                    t = Scanner.next();
-                    System.out.print("line " + t.line + ", col " + t.col + ": " + tokenName[t.kind]);
-                    switch (t.kind) {
-                        case ident:   System.out.println(t.string); break;
-                        case number:  System.out.println(t.val); break;
-                        case charCon: System.out.println(t.val); break;
-                        default: System.out.println(); break;
-                    }
-                } while (t.kind != eof);
-            } catch (IOException e) {
-                System.out.println("-- cannot open input file " + source + " " + e.getLocalizedMessage());
-            }
-        } else System.out.println("-- synopsis: java MJ.TestScanner <inputfileName>");
+        token = scanner.next();
+        assertEquals(token.kind, Token.NUMBER);
+        assertEquals(token.value, 42);
+
+        token = scanner.next();
+        assertEquals(token.kind, Token.NUMBER);
+        assertEquals(token.value, 12);
+
+        token = scanner.next();
+        assertEquals(token.kind, Token.NUMBER);
+        assertEquals(token.value, 1337);
+
+        assertEquals(scanner.next().kind, Token.EOF);
+    }
+
+    public void testCharConstants() {
+        String program = "'a'";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(program.getBytes()));
+
+        Token token = scanner.next();
+        assertEquals(token.kind, Token.CHAR_CONST);
+        assertEquals(token.value, 'a');
+
+        assertEquals(scanner.next().kind, Token.EOF);
+    }
+
+    public void testCharConstantsEscaped() {
+        String program = "'\\'' '\\n' '\\t'";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(program.getBytes()));
+
+        Token token;
+
+        token = scanner.next();
+        assertEquals(token.kind, Token.CHAR_CONST);
+        assertEquals(token.value, '\'');
+
+        token = scanner.next();
+        assertEquals(token.kind, Token.CHAR_CONST);
+        assertEquals(token.value, '\n');
+
+        token = scanner.next();
+        assertEquals(token.kind, Token.CHAR_CONST);
+        assertEquals(token.value, '\t');
+
+        assertEquals(scanner.next().kind, Token.EOF);
+    }
+
+    public void testOperators() {
+        String program = "+ - * / % = == != < <= > >=";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(program.getBytes()));
+
+        assertEquals(scanner.next().kind, Token.PLUS);
+        assertEquals(scanner.next().kind, Token.MINUS);
+        assertEquals(scanner.next().kind, Token.TIMES);
+        assertEquals(scanner.next().kind, Token.SLASH);
+        assertEquals(scanner.next().kind, Token.REM);
+        assertEquals(scanner.next().kind, Token.ASSIGN);
+        assertEquals(scanner.next().kind, Token.EQL);
+        assertEquals(scanner.next().kind, Token.NEQ);
+        assertEquals(scanner.next().kind, Token.LESS);
+        assertEquals(scanner.next().kind, Token.LEQ);
+        assertEquals(scanner.next().kind, Token.GTR);
+        assertEquals(scanner.next().kind, Token.GEQ);
+        assertEquals(scanner.next().kind, Token.EOF);
+    }
+
+    public void testSeparators() {
+        String program = "; . ,";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(program.getBytes()));
+
+        assertEquals(scanner.next().kind, Token.SEMICOLON);
+        assertEquals(scanner.next().kind, Token.PERIOD);
+        assertEquals(scanner.next().kind, Token.COMMA);
+        assertEquals(scanner.next().kind, Token.EOF);
+    }
+
+    public void testBrackets() {
+        String program = "(){}[]";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(program.getBytes()));
+
+        assertEquals(scanner.next().kind, Token.LPAR);
+        assertEquals(scanner.next().kind, Token.RPAR);
+        assertEquals(scanner.next().kind, Token.LBRACE);
+        assertEquals(scanner.next().kind, Token.RBRACE);
+        assertEquals(scanner.next().kind, Token.LBRACK);
+        assertEquals(scanner.next().kind, Token.RBRACK);
+        assertEquals(scanner.next().kind, Token.EOF);
+    }
+
+    public void testComments() {
+        String program = "program // program";
+        Scanner scanner = new Scanner(new ByteArrayInputStream(program.getBytes()));
+
+        assertEquals(scanner.next().kind, Token.PROGRAM);
+        assertEquals(scanner.next().kind, Token.EOF);
     }
 }

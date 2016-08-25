@@ -1,9 +1,11 @@
-package mj;/*
+package mj.error;/*
  * The Error class is an error wrapper, used in Scanner and parser
  * to represent errors in a leasy fashion style.
  * The class use the current token, dates the error, with preformat developer's messages
  * and Java Exception if needed.
  */
+
+import mj.scanner.Token;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -15,7 +17,7 @@ import java.util.Date;
  */
 public class Error {
     //Current Token.
-    public  Token T;
+    public Token T;
     //Date of the error.
     public String DatetimeOfError;
     // Custom Message.
