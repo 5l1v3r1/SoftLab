@@ -17,8 +17,8 @@ public class Compiler {
            System.out.println("-- synopsis: java mj.Compiler <inputfileName>");
         }
         // for idea case take input from command line
-        String inFile = "data/sample.mj";
-        String outFile = "data/sample.obj";
+        String inFile = "data/prime.mj";
+        String outFile = "data/prime.obj";
         try {
             Scanner scanner = new Scanner(new FileInputStream(inFile));
             Parser parser = new Parser(scanner);
