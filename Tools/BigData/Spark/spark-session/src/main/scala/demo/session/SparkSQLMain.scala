@@ -1,20 +1,20 @@
-package demo.stream
+package demo.session
 
 import java.text.SimpleDateFormat
 
 import org.apache.hadoop.fs.Path
-import org.apache.spark.sql.types.{StringType, StructField, StructType}
 import org.apache.spark.sql.{Row, SQLContext}
+import org.apache.spark.sql.types.{StringType, StructField, StructType}
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
-  * Created by hdhamee on 11/15/16.
-  */
+ * Created by hdhamee on 11/15/16.
+ */
 object SparkSQLMain {
   val dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
   def main(args: Array[String]) {
-    // table schema
+    /*// table schema
     val schemaString = "name age degree"
     val schema = StructType(schemaString.split(" ").map(fieldName => StructField(fieldName,StringType,true)))
 
@@ -31,11 +31,10 @@ object SparkSQLMain {
 
     // sql operation
     val df = sqlContext.createDataFrame(rawRdd,schema)
-    val a =  df.select("name","age","degree").filter(df("age") > 30).show()
+    val a =  df.select("name","age","degree").filter(df("age") > 30).show()*/
     println(new Path("Member/Hikmat Singh Dhamee.txt").toUri)
-
     // stop driver program
-    sc.stop()
+    //sc.stop()
 
   }
 }

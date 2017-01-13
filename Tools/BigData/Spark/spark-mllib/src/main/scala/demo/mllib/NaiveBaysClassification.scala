@@ -1,16 +1,16 @@
 package demo.mllib
 
+import org.apache.spark.ml.classification.NaiveBayes
+import org.apache.spark.ml.feature.LabeledPoint
+import org.apache.spark.ml.linalg.Vectors
 import org.apache.spark.{SparkConf, SparkContext}
-import org.apache.spark.mllib.classification.NaiveBayes
-import org.apache.spark.mllib.linalg.Vectors
-import org.apache.spark.mllib.regression.LabeledPoint
 
 /**
  * Sourced from: https://github.com/adahnlim/Mastering_Apache_Spark_Exam
- * 
+ *
  * @author hikmat
  */
-object NaiveBaysMLLib extends App{
+object NaiveBaysClassification extends App{
   val dataFile = "data/Result.csv"
 
   println("Hello ML Lib!" )
