@@ -8,14 +8,16 @@ import org.apache.spark.sql.SparkSession
 object SparkSessionExample {
 
   def main(args: Array[String]) {
+    //Step 1 : Create SparkSession
     val sparkSession = SparkSession.builder
       .master("local")
       .appName("spark session example")
       .getOrCreate()
 
-    val df = sparkSession.read.option("header","true").csv("src/main/resources/sales.csv")
+    //Step 2 : Read data
+    val data = sparkSession.read.text("src/main/resources/sales.csv")
 
-    df.show()
-
+    //Step3 : Show data
+    data.show()
   }
 }
