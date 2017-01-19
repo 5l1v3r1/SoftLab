@@ -8,6 +8,7 @@ import org.apache.spark.sql.SparkSession
 object SparkSessionExample {
 
   def main(args: Array[String]) {
+
     //Step 1 : Create SparkSession
     val sparkSession = SparkSession.builder
       .master("local")
