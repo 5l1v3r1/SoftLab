@@ -106,7 +106,7 @@ public class UsersGetway {
                     ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(users.userImage.getBytes(1, (int) users.userImage.length()));
                     users.image = new Image(byteArrayInputStream);
                 } else {
-                    users.image = new Image("/image/rifat.jpg");
+                    users.image = new Image("/image/dummyUser.jpg");
                 }
                 users.date = rs.getString(11);
                 users.creatorId = rs.getString(12);

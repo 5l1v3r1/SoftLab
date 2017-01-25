@@ -13,7 +13,7 @@ import java.io.IOException;
 /**
  * @author HikmatD
  */
-public class StoreKeeperMain extends Application {
+public class POSSystemApp extends Application {
 
     /**
      * @param args the command line arguments
@@ -37,7 +37,7 @@ public class StoreKeeperMain extends Application {
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Welcome to StoreKeeper -Login");
+        primaryStage.setTitle("Welcome to POS System -Login");
         primaryStage.getIcons().add(new Image("/image/icon.png"));
         primaryStage.setMaximized(false);
         primaryStage.setMinHeight(500.0);

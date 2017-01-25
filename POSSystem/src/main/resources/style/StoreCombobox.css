@@ -16,7 +16,7 @@ and open the template in the editor.
     -fx-border-width: 0.0px;
     -fx-font-size: 12px;
     -fx-padding: 0px;
-    /*-fx-font-weight:500;*/
+    -fx-font-weight:500;
     font-family: 'Open Sans', 'Helvetica Neue', 'Arial', 'sans-serif';
     -fx-font-style: underline;
 }

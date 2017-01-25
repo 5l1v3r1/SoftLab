@@ -40,7 +40,7 @@
 
                     <!-- executable JAR file is built by default (not optional at this stage) -->
                     <!-- mvn jfx:jar -->
-                    <mainClass>storkeeper.StoreKeeperMain</mainClass>
+                    <mainClass>storkeeper.POSSystemApp</mainClass>
 
                     <verbose>true</verbose>
                     <needShortcut>true</needShortcut> <!-- desktop shortcut-->

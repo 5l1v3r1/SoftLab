@@ -15,7 +15,7 @@
                     <children>
                         <AnchorPane fx:id="apDesignPane" prefHeight="384.0" prefWidth="668.0">
                             <children>
-                                <Label layoutX="14.0" layoutY="18.0" text="Store Keeper" textFill="#ddcdcc">
+                                <Label layoutX="14.0" layoutY="18.0" text="POS System" textFill="#ddcdcc">
                                     <font>
                                         <Font name="System Bold" size="31.0"/>
                                     </font>

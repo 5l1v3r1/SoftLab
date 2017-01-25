@@ -70,7 +70,7 @@ public class ViewEmployeController implements Initializable {
     Connection con = dbCon.geConnection();
     PreparedStatement pst;
     ResultSet rs;
-    Image usrImg = new Image("/image/rifat.jpg");
+    Image usrImg = new Image("/image/dummyUser.jpg");
     private File file;
     private BufferedImage bufferedImage;
     private String imagePath;
