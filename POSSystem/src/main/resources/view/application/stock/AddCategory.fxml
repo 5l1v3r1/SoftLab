@@ -72,6 +72,6 @@
             </children>
         </AnchorPane>
         <Button fx:id="btnClose" layoutX="457.0" layoutY="-5.0" mnemonicParsing="false" onAction="#btnCloseOnAction"
-                prefHeight="30.0" prefWidth="33.0" stylesheets="/style/btnOnText.css"/>
+                prefHeight="30.0" prefWidth="33.0" stylesheets="/style/BtnOnText.css"/>
     </children>
 </Group>

@@ -153,6 +153,6 @@
             </children>
         </AnchorPane>
         <Button fx:id="btnClose" layoutX="612.0" layoutY="2.0" mnemonicParsing="false" onAction="#btnCloseOnClick"
-                prefHeight="37.0" prefWidth="38.0" stylesheets="/style/btnOnText.css"/>
+                prefHeight="37.0" prefWidth="38.0" stylesheets="/style/BtnOnText.css"/>
     </children>
 </Group>

@@ -285,8 +285,20 @@ public class NewSellController implements Initializable {
         if (!tfQuantity.getText().isEmpty()) {
             String givenQuentity = tfQuantity.getText();
             int givenQinInt = Integer.parseInt(givenQuentity);
+
+            int currentQuentiInt = 0;
             String currentQuentity = lblCurrentQuantity.getText();
-            int currentQuentiInt = Integer.parseInt(currentQuentity);
+
+            if(currentQuentity != null){
+                currentQuentiInt = Integer.parseInt(currentQuentity);
+            }else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Empty Store");
+                alert.setContentText("There is no item in stock");
+                alert.showAndWait();
+            }
+
             if (givenQinInt > currentQuentiInt) {
                 System.out.println("BIG");
                 tfQuantity.clear();

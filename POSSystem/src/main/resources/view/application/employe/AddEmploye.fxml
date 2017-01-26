@@ -108,27 +108,27 @@
                                                 <TextField fx:id="tfPassword" GridPane.columnSpan="3"
                                                            GridPane.rowIndex="11"/>
                                                 <Button fx:id="btnClrUsrName" mnemonicParsing="false" prefHeight="25.0"
-                                                        prefWidth="35.0" stylesheets="/style/btnOnText.css"
+                                                        prefWidth="35.0" stylesheets="/style/BtnOnText.css"
                                                         GridPane.columnSpan="3" GridPane.halignment="RIGHT"
                                                         GridPane.rowIndex="1"/>
                                                 <Button fx:id="btnClrFullName" mnemonicParsing="false" prefHeight="25.0"
-                                                        prefWidth="35.0" stylesheets="/style/btnOnText.css"
+                                                        prefWidth="35.0" stylesheets="/style/BtnOnText.css"
                                                         GridPane.columnSpan="3" GridPane.halignment="RIGHT"
                                                         GridPane.rowIndex="3"/>
                                                 <Button fx:id="btnClrEmail" mnemonicParsing="false" prefHeight="25.0"
-                                                        prefWidth="35.0" stylesheets="/style/btnOnText.css"
+                                                        prefWidth="35.0" stylesheets="/style/BtnOnText.css"
                                                         GridPane.columnSpan="3" GridPane.halignment="RIGHT"
                                                         GridPane.rowIndex="5"/>
                                                 <Button fx:id="btnClrPhone" mnemonicParsing="false" prefHeight="25.0"
-                                                        prefWidth="35.0" stylesheets="/style/btnOnText.css"
+                                                        prefWidth="35.0" stylesheets="/style/BtnOnText.css"
                                                         GridPane.columnSpan="3" GridPane.halignment="RIGHT"
                                                         GridPane.rowIndex="7"/>
                                                 <Button fx:id="btnClrSalary" mnemonicParsing="false" prefHeight="25.0"
-                                                        prefWidth="35.0" stylesheets="/style/btnOnText.css"
+                                                        prefWidth="35.0" stylesheets="/style/BtnOnText.css"
                                                         GridPane.columnSpan="3" GridPane.halignment="RIGHT"
                                                         GridPane.rowIndex="9"/>
                                                 <Button fx:id="btnClrPassword" mnemonicParsing="false" prefHeight="25.0"
-                                                        prefWidth="35.0" stylesheets="/style/btnOnText.css"
+                                                        prefWidth="35.0" stylesheets="/style/BtnOnText.css"
                                                         GridPane.columnSpan="3" GridPane.halignment="RIGHT"
                                                         GridPane.rowIndex="11"/>
                                             </children>

@@ -74,11 +74,11 @@ public class EmployeController implements Initializable {
         ViewEmployeController viewEmployeController = fXMLLoader.getController();
         viewEmployeController.setNameMedia(nameMedia);
         viewEmployeController.showDetails();
-        viewEmployeController.btnClrCreatortf.getStylesheets().add("/style/btnOnText.css");
-        viewEmployeController.btnClrEmailtf.getStylesheets().add("/style/btnOnText.css");
-        viewEmployeController.btnClrFulNametf.getStylesheets().add("/style/btnOnText.css");
-        viewEmployeController.btnClrSalarytf.getStylesheets().add("/style/btnOnText.css");
-        viewEmployeController.btnClrPhonetf.getStylesheets().add("/style/btnOnText.css");
+        viewEmployeController.btnClrCreatortf.getStylesheets().add("/style/BtnOnText.css");
+        viewEmployeController.btnClrEmailtf.getStylesheets().add("/style/BtnOnText.css");
+        viewEmployeController.btnClrFulNametf.getStylesheets().add("/style/BtnOnText.css");
+        viewEmployeController.btnClrSalarytf.getStylesheets().add("/style/BtnOnText.css");
+        viewEmployeController.btnClrPhonetf.getStylesheets().add("/style/BtnOnText.css");
 //        viewEmployeController.checqPermission();
 
         AnchorPane acPane = fXMLLoader.getRoot();
@@ -100,12 +100,12 @@ public class EmployeController implements Initializable {
 
         AddEmployeController addEmployeController = fXMLLoader.getController();
         addEmployeController.setNameMedia(nameMedia);
-        addEmployeController.btnClrEmail.getStylesheets().add("/style/btnOnText.css");
-        addEmployeController.btnClrFullName.getStylesheets().add("/style/btnOnText.css");
-        addEmployeController.btnClrPassword.getStylesheets().add("/style/btnOnText.css");
-        addEmployeController.btnClrPhone.getStylesheets().add("/style/btnOnText.css");
-        addEmployeController.btnClrSalary.getStylesheets().add("/style/btnOnText.css");
-        addEmployeController.btnClrUsrName.getStylesheets().add("/style/btnOnText.css");
+        addEmployeController.btnClrEmail.getStylesheets().add("/style/BtnOnText.css");
+        addEmployeController.btnClrFullName.getStylesheets().add("/style/BtnOnText.css");
+        addEmployeController.btnClrPassword.getStylesheets().add("/style/BtnOnText.css");
+        addEmployeController.btnClrPhone.getStylesheets().add("/style/BtnOnText.css");
+        addEmployeController.btnClrSalary.getStylesheets().add("/style/BtnOnText.css");
+        addEmployeController.btnClrUsrName.getStylesheets().add("/style/BtnOnText.css");
 
         AnchorPane acPane = fXMLLoader.getRoot();
 

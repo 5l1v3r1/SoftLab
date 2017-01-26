@@ -42,14 +42,14 @@
                         <PasswordField fx:id="pfRePass" onAction="#pfOnAction" onKeyReleased="#pfNewPassWordMatch"
                                        GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5"/>
                         <Button fx:id="btnClrCurrentPf" mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0"
-                                stylesheets="/style/btnOnText.css" GridPane.columnIndex="1"
+                                stylesheets="/style/BtnOnText.css" GridPane.columnIndex="1"
                                 GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
                         <Button fx:id="btnClrRePass" layoutX="312.0" layoutY="43.0" mnemonicParsing="false"
-                                prefHeight="25.0" prefWidth="35.0" stylesheets="/style/btnOnText.css"
+                                prefHeight="25.0" prefWidth="35.0" stylesheets="/style/BtnOnText.css"
                                 GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT"
                                 GridPane.rowIndex="5"/>
                         <Button fx:id="btnClrNewPass" layoutX="10.0" layoutY="13.0" mnemonicParsing="false"
-                                prefHeight="25.0" prefWidth="35.0" stylesheets="/style/btnOnText.css"
+                                prefHeight="25.0" prefWidth="35.0" stylesheets="/style/BtnOnText.css"
                                 GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="RIGHT"
                                 GridPane.rowIndex="3"/>
                         <ImageView fx:id="imgCurrentPassMatch" fitHeight="25.0" fitWidth="35.0" pickOnBounds="true"
@@ -72,6 +72,6 @@
             </effect>
         </AnchorPane>
         <Button fx:id="btnClose" layoutX="401.0" layoutY="-4.0" mnemonicParsing="false" onAction="#btnCloseOnAction"
-                prefHeight="34.0" prefWidth="31.0" stylesheets="/style/btnOnText.css"/>
+                prefHeight="34.0" prefWidth="31.0" stylesheets="/style/BtnOnText.css"/>
     </children>
 </Group>

@@ -81,7 +81,7 @@
                                         </MenuButton>
                                         <Label text="Enter Product Id :" GridPane.columnSpan="2" GridPane.rowIndex="1"/>
                                         <TextField fx:id="tfProductId" onAction="#tfProductIdOnAction"
-                                                   promptText="Enter Product Id and hit enter" GridPane.columnSpan="3"
+                                                   promptText="Enter Product Id and Hit Enter" GridPane.columnSpan="3"
                                                    GridPane.rowIndex="2"/>
                                         <TableView fx:id="tblSellPreList" prefHeight="200.0" prefWidth="200.0"
                                                    GridPane.columnSpan="8" GridPane.rowIndex="12" GridPane.rowSpan="4">
@@ -106,13 +106,18 @@
                                             </columnResizePolicy>
                                         </TableView>
                                         <Label text="Quantity" GridPane.rowIndex="5"/>
+
                                         <TextField fx:id="tfQuantity" onKeyReleased="#tfQuantityOnAction"
                                                    GridPane.columnSpan="3" GridPane.rowIndex="6"/>
+
                                         <Label fx:id="lblCurrentQuantity" text="Have" GridPane.columnIndex="2"
                                                GridPane.rowIndex="5"/>
+
                                         <Label text="On Stock :" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
                                         <TextField fx:id="tfSellPrice" onKeyReleased="#tfSellPriceOnAction"
                                                    GridPane.columnSpan="3" GridPane.rowIndex="8"/>
+
                                         <Label text="Sell Price" GridPane.rowIndex="7"/>
                                         <Label text="Purses Price :" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
                                         <Label fx:id="lblPursesPrice" text="is" GridPane.columnIndex="2"
@@ -188,6 +193,6 @@
             </children>
         </AnchorPane>
         <Button fx:id="btnClose" layoutX="860.0" layoutY="-6.0" mnemonicParsing="false" onAction="#btnCloseOnAction"
-                prefHeight="34.0" prefWidth="32.0" stylesheets="/style/btnOnText.css"/>
+                prefHeight="34.0" prefWidth="32.0" stylesheets="/style/BtnOnText.css"/>
     </children>
 </Group>

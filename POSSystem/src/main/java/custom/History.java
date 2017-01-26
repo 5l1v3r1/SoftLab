@@ -44,7 +44,7 @@ public class History {
             HistoryController hc = new HistoryController();
             StringBuilder sb = new StringBuilder();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/history.fxml"));
+            loader.setLocation(getClass().getResource("/view/History.fxml"));
             loader.load();
             Parent root = loader.getRoot();
             Stage s1 = new Stage();

@@ -11,7 +11,7 @@
         <BorderPane fx:id="bpStore" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
                     AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
-                <AnchorPane fx:id="acHeadStore" prefHeight="81.0" prefWidth="965.0" stylesheets="/style/store.css"
+                <AnchorPane fx:id="acHeadStore" prefHeight="81.0" prefWidth="965.0" stylesheets="/style/Store.css"
                             BorderPane.alignment="CENTER">
                     <children>
                         <GridPane prefHeight="92.0" prefWidth="965.0" AnchorPane.bottomAnchor="0.0"

@@ -20,7 +20,7 @@
                         <Button fx:id="btnSave" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save"
                                 GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7"/>
                         <Button fx:id="btnClrUnitName" mnemonicParsing="false" prefHeight="29.0" prefWidth="33.0"
-                                stylesheets="/style/btnOnText.css" GridPane.columnSpan="3"
+                                stylesheets="/style/BtnOnText.css" GridPane.columnSpan="3"
                                 GridPane.halignment="RIGHT" GridPane.rowIndex="1"/>
                         <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#btnUpdateOnAction" text="Update"
                                 GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="7"/>
@@ -49,6 +49,6 @@
             </children>
         </AnchorPane>
         <Button fx:id="btnClose" layoutX="358.0" layoutY="-3.0" mnemonicParsing="false" onAction="#btnCloseOnAction"
-                prefHeight="33.0" prefWidth="33.0" stylesheets="/style/btnOnText.css"/>
+                prefHeight="33.0" prefWidth="33.0" stylesheets="/style/BtnOnText.css"/>
     </children>
 </Group>

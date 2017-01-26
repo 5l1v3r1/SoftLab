@@ -72,23 +72,23 @@
                                                   GridPane.rowSpan="3"/>
                                         <Button fx:id="btnClrFulNametf" layoutX="167.0" layoutY="43.0"
                                                 mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0"
-                                                stylesheets="/style/btnOnText.css" GridPane.columnSpan="2"
+                                                stylesheets="/style/BtnOnText.css" GridPane.columnSpan="2"
                                                 GridPane.halignment="RIGHT" GridPane.rowIndex="3"/>
                                         <Button fx:id="btnClrPhonetf" layoutX="10.0" layoutY="103.0"
                                                 mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0"
-                                                stylesheets="/style/btnOnText.css" GridPane.columnSpan="2"
+                                                stylesheets="/style/BtnOnText.css" GridPane.columnSpan="2"
                                                 GridPane.halignment="RIGHT" GridPane.rowIndex="5"/>
                                         <Button fx:id="btnClrEmailtf" layoutX="10.0" layoutY="163.0"
                                                 mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0"
-                                                stylesheets="/style/btnOnText.css" GridPane.columnSpan="2"
+                                                stylesheets="/style/BtnOnText.css" GridPane.columnSpan="2"
                                                 GridPane.halignment="RIGHT" GridPane.rowIndex="7"/>
                                         <Button fx:id="btnClrSalarytf" layoutX="10.0" layoutY="223.0"
                                                 mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0"
-                                                stylesheets="/style/btnOnText.css" GridPane.columnSpan="2"
+                                                stylesheets="/style/BtnOnText.css" GridPane.columnSpan="2"
                                                 GridPane.halignment="RIGHT" GridPane.rowIndex="9"/>
                                         <Button fx:id="btnClrDatestf" layoutX="10.0" layoutY="283.0"
                                                 mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0"
-                                                stylesheets="/style/btnOnText.css" GridPane.columnSpan="2"
+                                                stylesheets="/style/BtnOnText.css" GridPane.columnSpan="2"
                                                 GridPane.halignment="RIGHT" GridPane.rowIndex="11"/>
                                         <Button fx:id="btnClrCreatortf" layoutX="10.0" layoutY="343.0"
                                                 mnemonicParsing="false" prefHeight="25.0" prefWidth="35.0" text="Button"
