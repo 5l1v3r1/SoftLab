@@ -34,7 +34,6 @@ The basic steps to write a WebCrawler are:
 
 # Simple WebCrawler Architecture
 ![WebCrawler Architecture](https://frontera.readthedocs.io/en/v0.2.0/_images/frontier_01.png)
-Format: ![Alt Text](url)
 
 # What is a Crawler Frontier
 - A crawl frontier is the part of a crawling system that decides the logic and policies to follow when
@@ -43,4 +42,3 @@ Format: ![Alt Text](url)
 
 # Detailed Architecture
 ![WebCrawler Architecture](https://frontera.readthedocs.io/en/v0.2.0/_images/frontier_02.png)
-Format: ![Alt Text](url)
