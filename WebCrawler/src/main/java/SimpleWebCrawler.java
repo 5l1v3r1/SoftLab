@@ -17,18 +17,18 @@ public class SimpleWebCrawler {
     public static List<List<String>> crawledData = new ArrayList<List<String>>();
 
     //1. Pick a URL from the frontier, Here the seedUrl
-    public SimpleWebCrawler(String seedUrl, int maxVisitCount) throws Exception {
+    public SimpleWebCrawler(String seedUrl, int MAX_VISIT_DEPTH) throws Exception {
         if(seedUrl.matches(VALID_URL)){
             System.out.println("Malformed seed url! " + seedUrl);
             return;
         }
         List<String> urls = new ArrayList<String>();
         Set<String> visitedUrls = new HashSet<String>();
-        int currentVisitCount = 0;
+        int visitDepth = 0;
 
         urls.add(seedUrl);
 
-        while (currentVisitCount < maxVisitCount && !urls.isEmpty()) {
+        while (visitDepth < MAX_VISIT_DEPTH && !urls.isEmpty()) {
             String url = urls.remove(0);
 
             //4. Check if you have already visited the URL
@@ -38,7 +38,7 @@ public class SimpleWebCrawler {
                  //2. Fetch the HTML code
                 Document doc = Jsoup.connect(url).get();
 
-                currentVisitCount++;
+                visitDepth++;
 
                 String text = doc.text();
 
