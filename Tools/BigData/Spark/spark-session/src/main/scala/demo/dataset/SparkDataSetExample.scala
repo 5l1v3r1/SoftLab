@@ -51,8 +51,20 @@ object SparkDataSetExample {
       .groupBy(salesDS("ITEM_NAME"))
       .agg(sum(productsDS("ITEM_PRICE")),max(salesDS("ITEM_QTY")))
 
+    // UDFs
+    // Define a regular Scala function
+    def toUpper = (x:String,y:String) => x+y
+
+    // Define a UDF that wraps the upper Scala function defined above
+    // You could also define the function in place, i.e. inside udf
+    // but separating Scala functions from Spark SQL's UDFs allows for easier testing
+    import org.apache.spark.sql.functions.udf
+    def toUpperUDF = udf(toUpper)
+
+    val upperDs = aggsDs.withColumn("ITEM_NAME",toUpperUDF(aggsDs("ITEM_NAME"),lit("_test")))
+
     //Step 4: Print results
-    aggsDs.show()
+    upperDs.show()
 
   }
 
