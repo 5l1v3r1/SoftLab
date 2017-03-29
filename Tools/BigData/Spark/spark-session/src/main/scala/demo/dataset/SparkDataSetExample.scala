@@ -24,21 +24,32 @@ object SparkDataSetExample {
 
     //Step 2 : Read data and convert to Dataset
     import sparkSession.implicits._
-    val ds = sparkSession.read
+    val salesDS = sparkSession.read
       .option("header","false")
       .option("delimiter",";")
       .option("charset", "UTF8")
       .schema(itemSchema)
-      .csv("src/main/resources/sales.csv").as[ItemRow]
+      .csv("src/main/resources/sales.csv")
+      .as[ItemRow]
 
-    //Step 3 : Split and group by word
-    import org.apache.spark.sql.expressions.scalalang._
+    val productsDS = sparkSession.read
+      .option("header","false")
+      .option("delimiter",";")
+      .option("charset", "UTF8")
+      .schema(itemSchema)
+      .csv("src/main/resources/products.csv")
+      .as[ItemRow]
+      .cache()
 
-    val filteredDs = ds.filter(_.ITEM_QTY > 1)
+    //Step 3 : Filter and join by PK
+    val filteredDs = salesDS.filter(_.ITEM_QTY > 1)
 
-    val aggsDs = filteredDs
-      .groupByKey(Row => Row.ITEM_NAME)
-      .agg(typed.sum[ItemRow](_.ITEM_PRICE),typed.sum[ItemRow](_.ITEM_QTY))
+    val  joinedDs = productsDS.join(salesDS,salesDS("ITEM_NAME")===productsDS("ITEM_NAME"))
+
+    import org.apache.spark.sql.functions._
+    val aggsDs = joinedDs
+      .groupBy(salesDS("ITEM_NAME"))
+      .agg(sum(productsDS("ITEM_PRICE")),max(salesDS("ITEM_QTY")))
 
     //Step 4: Print results
     aggsDs.show()

@@ -16,9 +16,9 @@ object SparkSessionExample {
       .getOrCreate()
 
     //Step 2 : Read data
-    val data = sparkSession.read.text("src/main/resources/sales.csv")
+    val dataFrame = sparkSession.read.text("src/main/resources/sales.csv")
 
     //Step3 : Show data
-    data.show()
+    dataFrame.show()
   }
 }
