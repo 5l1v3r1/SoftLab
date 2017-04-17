@@ -1,3 +1,5 @@
+package hk;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -7,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by hdhamee on 3/27/17.
  */
-public class GoogleSearchResultScapper {
+public class GoogleSearchResultScrapper {
     public static void main (String args[])
     {
         Document doc;
