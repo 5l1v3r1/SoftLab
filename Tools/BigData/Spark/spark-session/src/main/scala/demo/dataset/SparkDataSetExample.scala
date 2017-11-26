@@ -8,7 +8,7 @@ import org.apache.spark.sql.types._
   * Either as column name or as query. This is prone to error. For example df.select(“colour”)
   * would pass at compile time and would only blow a likely long running job at run time.
   *
-  * A DataFrame is basically a RDD[Row] where a Row is just an Array[Any].DF solves this.
+  * A DataSet is basically a RDD[Row] where a Row is just an Array[Any].DS solves this.
 
   * Created by hdhamee on 1/13/17.
   */
